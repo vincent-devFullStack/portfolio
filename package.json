@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.6.1"
+    "astro": "^5.6.1",
+    "mdast-util-gfm-auto-literal": "^2.0.0"
   }
 }
