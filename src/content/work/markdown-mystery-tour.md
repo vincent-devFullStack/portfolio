@@ -1,35 +1,39 @@
 ---
-title: Markdown Mystery Tour
-publishDate: 2020-03-02 00:00:00
-img: /assets/stock-1.jpg
-img_alt: Iridescent ripples of a bright blue and pink liquid
+title: Mentor Gym Fitness
+publishDate: 2025-04-10 00:00:00
+img: /assets/mgf-project.jpg
+img_alt: Application mobile Mentor Gym Fitness
 description: |
-  We designed a whodunnit-style game to introduce Markdown formatting. Suspense — suspicion — syntax!
+  Mentor Gym Fitness est une application mobile complète conçue pour accompagner les passionnés de fitness et les athlètes dans la gestion de leurs objectifs de remise en forme. Elle propose une gamme de programmes d'entraînement personnalisés, le suivi des progrès et des conseils nutritionnels adaptés aux objectifs individuels. L'application se concentre sur la motivation, l'amélioration des performances et le suivi des métriques clés pour garantir que les utilisateurs restent sur la bonne voie et atteignent leurs objectifs de fitness.
+
 tags:
-  - Design
-  - Dev
-  - User Testing
+  - React Native
+  - Node.js
+  - MongoDB
 ---
 
-## Level-two heading
+## Aperçu de MGF
 
-> Tell me and I forget. Teach me and I remember. Involve me and I learn.
+> Une application conçue pour les coachs, pensée par les coachs.
 
-Lorem ipsum dolor sit amet, <a href="https://astro.build/">Astro</a> makes people happy. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin nibh nisl condimentum id venenatis a condimentum vitae. Dapibus ultrices in iaculis nunc. Arcu odio ut sem nulla pharetra diam sit amet. Diam quis enim lobortis scelerisque fermentum dui faucibus in ornare.
+Mentor Gym Fitness est une application mobile full-stack qui permet aux utilisateurs de gérer leurs objectifs de remise en forme, de suivre leurs progrès et d'améliorer leurs performances au fil du temps. Conçue pour les personnes cherchant une routine de fitness structurée, l'application offre des programmes d'entraînement personnalisés et des outils de suivi des progrès.
 
-Arcu dui vivamus arcu felis bibendum ut tristique et egestas. Eget gravida cum sociis natoque penatibus. Cras fermentum odio eu feugiat pretium nibh. Proin nibh nisl condimentum id venenatis. Porta nibh venenatis cras sed felis eget velit. Id diam vel quam elementum pulvinar etiam non.
+Mentor Gym Fitness est construite avec React Native, Node.js et MongoDB, garantissant une expérience utilisateur fluide et évolutive. L'application est pensée pour être intuitive et facile à utiliser, permettant à chacun de débuter son parcours de remise en forme, que ce soit pour les débutants ou les athlètes expérimentés.
 
-### Level-three heading
+### Fonctionnalités clés de Mentor Gym Fitness
 
-Ultrices tincidunt arcu non sodales neque sodales ut. Sed enim ut sem viverra aliquet eget sit amet. Lacus luctus accumsan tortor posuere ac ut consequat semper viverra. Viverra accumsan in nisl nisi scelerisque eu ultrices. In massa tempor nec feugiat nisl pretium fusce.
+- Programmes d'entraînement personnalisés adaptés au niveau et aux objectifs individuels (En cours).
 
-### Level-three heading
+- Téléchargement de photos pour suivre visuellement l'évolution physique.
 
-Sed pulvinar porttitor mi in ultricies. Etiam non dolor gravida eros pulvinar pellentesque et dictum ex. Proin eu ornare ligula, sed condimentum dui. Vivamus tincidunt tellus mi, sed semper ipsum pharetra a. Suspendisse sollicitudin at sapien nec volutpat. Etiam justo urna, laoreet ac lacus sed, ultricies facilisis dolor. Integer posuere, metus vel viverra gravida, risus elit ornare magna, id feugiat erat risus ullamcorper libero. Proin vitae diam auctor, laoreet lorem vitae, varius tellus.
+- Messagerie intégrée.
 
-Aenean pretium purus augue, ut bibendum erat convallis quis. Cras condimentum quis velit ac mollis. Suspendisse non purus fringilla, venenatis nisl porta, finibus odio. Curabitur aliquet metus faucibus libero interdum euismod. Morbi sed magna nisl. Morbi odio nibh, facilisis vel sapien eu, tempus tincidunt erat. Nullam erat velit, sagittis at purus quis, tristique scelerisque tortor. Pellentesque lacinia tortor id est aliquam viverra. Vestibulum et diam ac ipsum mollis fringilla.
+- Outils de suivi des progrès pour suivre la force, l'endurance et d'autres métriques clés. (Prévu ultérieurement)
 
-#### Level-four heading
+- Conseils nutritionnels pour accompagner les programmes d'entraînement et optimiser les résultats. (Prévu ultérieurement)
 
-- We noted this
-- And also this other point
+- Plusieurs autres fonctionnalités prévues pour enrichir l'expérience utilisateur à long terme.
+
+#### Autres points à noter
+
+- Un deuxième projet en lien avec celui-ci est prévu : un site Web permettant aux coachs de gérer plus facilement la partie financière et la création de contenu pour leurs clients.
