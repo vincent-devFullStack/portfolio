@@ -19,8 +19,8 @@ const { title, description } = Astro.props;
 		<MainHead title={title} description={description} />
 
 <!-- HTML Meta Tags -->
-<title>Vincent Silvestri – Développeur Web & Mobile</title>
-<meta name="description" content="Portfolio de Vincent Silvestri : projets, compétences, et contact pour vos idées web ou mobile." />
+<title>Vincent Silvestri – Développeur Web & Mobile à Nice | Portfolio</title>
+<meta name="description" content="Portfolio de Vincent Silvestri, Développeur Web et Mobile à Nice, spécialisé en React, Node.js, MongoDB. Découvrez mes projets et compétences en développement web et mobile." />
 <meta name="author" content="Vincent Silvestri" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#ffffff" />
@@ -42,6 +42,25 @@ const { title, description } = Astro.props;
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta charset="UTF-8" />
+
+<link rel="canonical" href="https://www.vince-dev.fr/" />
+
+<script type="application/ld+json">
+	{
+	  "@context": "http://schema.org",
+	  "@type": "Person",
+	  "name": "Vincent Silvestri",
+	  "jobTitle": "Développeur Web et Mobile",
+	  "url": "https://www.vince-dev.fr",
+	  "sameAs": [
+		"https://www.linkedin.com/in/vincent-silvestri/",
+		"https://github.com/vincent-silvestri"
+	  ]
+	}
+	</script>
+	
+
 	</head>
 	<body>
 		<div class="stack backgrounds">
