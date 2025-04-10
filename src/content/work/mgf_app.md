@@ -1,5 +1,5 @@
 ---
-title: Mentor Gym Fitness
+title: Mentor Gym Fitness (App)
 publishDate: 2025-04-10 00:00:00
 img: /assets/mgf-project.jpg
 img_alt: Application mobile Mentor Gym Fitness
