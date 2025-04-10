@@ -17,6 +17,16 @@ const { title, description } = Astro.props;
 <html lang="fr">
 	<head>
 		<MainHead title={title} description={description} />
+
+		<!-- Open Graph / Social preview -->
+		<meta property="og:title" content="Vincent Silvestri – Développeur Web & Mobile" />
+		<meta property="og:description" content="Portfolio de Vincent Silvestri : projets, compétences, et contact pour vos idées web ou mobile." />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://www.vince-dev.fr/" />
+		<meta property="og:image" content="https://www.vince-dev.fr/assets/portrait-min.jpg" />
+
+		<!-- Favicon -->
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 	</head>
 	<body>
 		<div class="stack backgrounds">
