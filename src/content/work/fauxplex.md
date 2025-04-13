@@ -26,8 +26,8 @@ Le site est composé d’une **navbar fixe dégradée**, d’un **menu burger an
 Vous pouvez consulter le code source ici :  
 👉 [Voir sur GitHub](https://github.com/vincent-devFullStack/faux-plex.git)
 
-Et tester l'application en ligne ici :  
-🚀 [Voir en ligne (Vercel)](https://)
+<!-- Et tester l'application en ligne ici :
+🚀 [Voir en ligne (Vercel)](https://) -->
 
 ---
 
