@@ -102,8 +102,13 @@ const { Content } = await render(entry);
 
   .tags {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
   }
+
+  .tags > .pill {
+  flex: 0 1 auto;
+}
 
   .description {
     font-size: var(--text-lg);
