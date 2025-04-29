@@ -21,18 +21,46 @@ Elle est **actuellement en cours de développement**, et a pour but de démontre
 - Systèmes de navigation adaptative (desktop/mobile)
 - Design front-end avec un branding personnalisé
 
-Le site est composé d’une **navbar fixe dégradée**, d’un **menu burger animé**, d’un champ de **recherche stylisé**, et d’un layout clair. Le tout est construit avec **Next.js 15** et **React**, en utilisant des **modules CSS** pour le style.
-
-Vous pouvez consulter le code source ici :  
-👉 [Voir sur GitHub](https://github.com/vincent-devFullStack/faux-plex.git)
-
-<!-- Et tester l'application en ligne ici :
-🚀 [Voir en ligne (Vercel)](https://) -->
+Le site est composé d’une **navbar fixe dégradée**, d’un **menu burger animé**, d’un champ de **recherche stylisé**, et d’un layout clair.  
+Le tout est construit avec **Next.js 15**, **React**, et stylisé via **CSS Modules**.
 
 ---
 
-Ce projet a également servi de démonstration pour :
+## 🔧 Fonctionnalités techniques
 
-<!-- - le routing dynamique de Next.js
-- le système de composants modulaires
-- l’intégration fluide d’une UX mobile-first -->
+- Appels dynamiques à l’API [TMDb](https://www.themoviedb.org/)
+- Routing dynamique (`/film/[id]`) avec pré-rendu statique
+- Affichage conditionnel avec `IntersectionObserver`
+- Animation d’apparition des cartes films
+- Barre de recherche reliée à une route `/recherche` avec `useSearchParams`
+- Fiches détaillées pour chaque film (poster, synopsis, genres, date, note)
+- Utilisation des options `{ next: { revalidate: 3600 } }` pour l’ISR
+
+---
+
+## 🤖 Ce que j’ai appris
+
+Développer **Faux Plex** m’a permis de renforcer mes compétences sur :
+
+- L’organisation modulaire d’un projet React avec Next.js App Router
+- La gestion d’état et du cycle de vie (`useState`, `useEffect`, `useRef`)
+- Le système de routing dynamique et de paramètres d’URL
+- L'intégration d'une API REST externe (TMDb)
+- Le responsive design propre, sans framework CSS externe
+
+---
+
+## 🚀 Prochaines évolutions
+
+- 🎞️ Intégration des bandes-annonces via l'API de TMDb
+- 💾 Ajout d’un système de favoris local avec `localStorage`
+- 🪪 Système d’authentification avec NextAuth
+- 📱 Amélioration de l’UX mobile (animations, transitions)
+- 🌐 Déploiement public via **Vercel**
+
+---
+
+## 🔗 Liens utiles
+
+- 💻 Code source : [Voir sur GitHub](https://github.com/vincent-devFullStack/faux-plex.git)
+<!-- - 🚀 Démo en ligne : [Tester sur Vercel](https://...) -->
