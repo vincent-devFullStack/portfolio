@@ -55,11 +55,10 @@ Développer **Faux Plex** m’a permis de renforcer mes compétences sur :
 - 💾 Ajout d’un système de favoris local avec `localStorage`
 - 🪪 Système d’authentification avec NextAuth
 - 📱 Amélioration de l’UX mobile (animations, transitions)
-- 🌐 Déploiement public via **Vercel**
 
 ---
 
 ## 🔗 Liens utiles
 
 - 💻 Code source : [Voir sur GitHub](https://github.com/vincent-devFullStack/faux-plex.git)
-<!-- - 🚀 Démo en ligne : [Tester sur Vercel](https://...) -->
+- 🚀 Démo en ligne : [Voir Faux Plex](https://faux-flex.vercel.app)
