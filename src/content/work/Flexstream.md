@@ -1,19 +1,20 @@
----
-title: Faux Plex
+title: Flexstream
 publishDate: 2025-04-13 00:00:00
-img: /assets/plex.jpg
-img_alt: Capture de la page d'accueil de l'application Faux Plex, avec navbar dégradée et menu responsive.
+img: /assets/flexstream.jpg
+img_alt: Capture de la page d'accueil de l'application Flexstream, avec navbar dégradée et menu responsive.
 description: |
-  Faux Plex est une plateforme de film fictive développée avec Next.js. 
-  Elle propose une barre de recherche animée, une navigation responsive et un burger menu mobile. 
-  Ce projet est **en cours de développement** et s'inspire de l'interface Plex.tv.
+Flexstream est une plateforme de streaming fictive développée avec Next.js.
+Elle propose une barre de recherche animée, une navigation responsive et un burger menu mobile.
+Ce projet est **en cours de développement** et s'inspire des interfaces modernes des plateformes vidéo.
 tags:
-  - Next.js
-  - CSS Modules
-  - En cours
+
+- Next.js
+- CSS Modules
+- En cours
+
 ---
 
-Faux Plex est une application vitrine inspirée des plateformes de streaming comme Plex.tv.  
+Flexstream est une application vitrine inspirée des plateformes de streaming vidéo.  
 Elle est **actuellement en cours de développement**, et a pour but de démontrer mes compétences en :
 
 - Responsive design
@@ -39,7 +40,7 @@ Le tout est construit avec **Next.js 15**, **React**, et stylisé via **CSS Modu
 
 ## 🤖 Ce que j’ai appris
 
-Développer **Faux Plex** m’a permis de renforcer mes compétences sur :
+Développer **Flexstream** m’a permis de renforcer mes compétences sur :
 
 - L’organisation modulaire d’un projet React avec Next.js App Router
 - La gestion d’état et du cycle de vie (`useState`, `useEffect`, `useRef`)
@@ -61,4 +62,4 @@ Développer **Faux Plex** m’a permis de renforcer mes compétences sur :
 ## 🔗 Liens utiles
 
 - 💻 Code source : [Voir sur GitHub](https://github.com/vincent-devFullStack/faux-plex.git)
-- 🚀 Démo en ligne : [Voir Faux Plex](https://faux-flex.vercel.app)
+- 🚀 Démo en ligne : [Voir Flexstream](https://faux-flex.vercel.app)
