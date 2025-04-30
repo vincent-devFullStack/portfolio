@@ -1,0 +1,39 @@
+import { getCollection } from 'astro:content';
+import { defineRoute } from 'astro:routes';
+
+export const GET = defineRoute(async () => {
+  const pages = [
+    { url: '', priority: '1.0', changefreq: 'monthly' },
+    { url: 'about', priority: '0.7', changefreq: 'yearly' },
+    { url: 'work', priority: '0.8', changefreq: 'monthly' },
+  ];
+
+  const projects = await getCollection('work');
+  projects.forEach((project) => {
+    pages.push({
+      url: `work/${project.slug}`,
+      priority: '0.6',
+      changefreq: 'yearly',
+    });
+  });
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${pages
+  .map(
+    (page) => `
+  <url>
+    <loc>https://www.vince-dev.fr/${page.url}</loc>
+    <changefreq>${page.changefreq}</changefreq>
+    <priority>${page.priority}</priority>
+  </url>`
+  )
+  .join('\n')}
+</urlset>`;
+
+  return new Response(xml, {
+    headers: {
+      'Content-Type': 'application/xml',
+    },
+  });
+});
