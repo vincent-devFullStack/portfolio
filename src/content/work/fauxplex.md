@@ -19,7 +19,6 @@ Elle est **actuellement en cours de développement**, et a pour but de démontre
 - Responsive design
 - Intégration de composants réutilisables
 - Systèmes de navigation adaptative (desktop/mobile)
-- Design front-end avec un branding personnalisé
 
 Le site est composé d’une **navbar fixe dégradée**, d’un **menu burger animé**, d’un champ de **recherche stylisé**, et d’un layout clair.  
 Le tout est construit avec **Next.js 15**, **React**, et stylisé via **CSS Modules**.
