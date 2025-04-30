@@ -61,5 +61,5 @@ Développer **Flexstream** m’a permis de renforcer mes compétences sur :
 
 ## 🔗 Liens utiles
 
-- 💻 Code source : [Voir sur GitHub](https://github.com/vincent-devFullStack/faux-plex.git)
-- 🚀 Démo en ligne : [Voir Flexstream](https://faux-flex.vercel.app)
+- 💻 Code source : [Voir sur GitHub](https://github.com/vincent-devFullStack/flexstream.git)
+- 🚀 Démo en ligne : [Voir Flexstream](https://flexstream.vercel.app)
