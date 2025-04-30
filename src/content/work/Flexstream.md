@@ -1,17 +1,17 @@
+---
 title: Flexstream
-publishDate: 2025-04-13 00:00:00
+publishDate: 2025-04-13
 img: /assets/flexstream.jpg
 img_alt: Capture de la page d'accueil de l'application Flexstream, avec navbar dégradée et menu responsive.
 description: |
-Flexstream est une plateforme de streaming fictive développée avec Next.js.
-Elle propose une barre de recherche animée, une navigation responsive et un burger menu mobile.
-Ce projet est **en cours de développement** et s'inspire des interfaces modernes des plateformes vidéo.
+  Flexstream est une plateforme de film fictive développée avec Next.js.
+  Elle propose une barre de recherche animée, une navigation responsive et un menu burger mobile.
+  Ce projet est **en cours de développement** et s'inspire des interfaces de plateformes de streaming.
+
 tags:
-
-- Next.js
-- CSS Modules
-- En cours
-
+  - Next.js
+  - CSS Modules
+  - En cours
 ---
 
 Flexstream est une application vitrine inspirée des plateformes de streaming vidéo.  
