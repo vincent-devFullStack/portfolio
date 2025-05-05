@@ -67,17 +67,11 @@ const { Content } = await render(entry);
         <div class="stack gap-10 content">
           {entry.data.img && (
             entry.data.demo ? (
-              <a href={entry.data.demo} target="_blank" rel="noopener noreferrer">
-                <img 
-                  src={entry.data.img} 
-                  alt={entry.data.img_alt || ''} 
-                />
+              <a href={entry.data.demo} target="_blank" rel="noopener noreferrer" aria-label={`Voir la démo de ${entry.data.title}`} class="demo-image">
+                <img src={entry.data.img} alt={entry.data.img_alt || ''} loading="lazy" />
               </a>
             ) : (
-              <img 
-                src={entry.data.img} 
-                alt={entry.data.img_alt || ''} 
-              />
+            <img src={entry.data.img} alt={entry.data.img_alt || ''} loading="lazy" />
             )
           )}
           
