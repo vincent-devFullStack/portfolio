@@ -3,6 +3,7 @@ title: Flexstream
 publishDate: 2025-04-13
 img: /assets/flexstream.jpg
 img_alt: Capture de la page d'accueil de l'application Flexstream, avec navbar dégradée et menu responsive.
+demo: https://flexstream.vercel.app
 description: |
   Flexstream est une plateforme de film fictive développée avec Next.js.
   Elle propose une barre de recherche animée, une navigation responsive et un menu burger mobile.

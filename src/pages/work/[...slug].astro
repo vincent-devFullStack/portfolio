@@ -66,11 +66,21 @@ const { Content } = await render(entry);
       <main class="wrapper">
         <div class="stack gap-10 content">
           {entry.data.img && (
-            <img 
-              src={entry.data.img} 
-              alt={entry.data.img_alt || ''} 
-            />
+            entry.data.demo ? (
+              <a href={entry.data.demo} target="_blank" rel="noopener noreferrer">
+                <img 
+                  src={entry.data.img} 
+                  alt={entry.data.img_alt || ''} 
+                />
+              </a>
+            ) : (
+              <img 
+                src={entry.data.img} 
+                alt={entry.data.img_alt || ''} 
+              />
+            )
           )}
+          
           <div class="content">
             <Content />
           </div>
