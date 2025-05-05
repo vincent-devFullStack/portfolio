@@ -2,6 +2,12 @@
   "redirects": [
     {
       "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "vince-dev.fr"
+        }
+      ],
       "destination": "https://www.vince-dev.fr/$1",
       "permanent": true
     }
