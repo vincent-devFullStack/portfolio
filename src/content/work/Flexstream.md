@@ -1,62 +1,70 @@
 ---
-title: Flexstream
+title: "Flexstream ✅"
 publishDate: 2025-04-13
 img: /assets/flexstream.jpg
 img_alt: Capture de la page d'accueil de l'application Flexstream, avec navbar dégradée et menu responsive.
 demo: https://flexstream.vercel.app
 description: |
-  Flexstream est une plateforme de film fictive développée avec Next.js.
-  Elle propose une barre de recherche animée, une navigation responsive et un menu burger mobile.
-  Ce projet est **en cours de développement** et s'inspire des interfaces de plateformes de streaming.
+  Flexstream est une application web inspirée des grandes plateformes de streaming, développée avec Next.js 14.
+  Elle propose une recherche dynamique, des fiches médias détaillées, une authentification sécurisée et une interface responsive soignée.
+  Ce projet met en avant ma capacité à construire une application complète, connectée à une API externe, avec une gestion utilisateur personnalisée.
 
 tags:
   - Next.js
-  - CSS Modules
-  - En cours
+  - MongoDB
+  - TMDb API
 ---
 
 Flexstream est une application vitrine inspirée des plateformes de streaming vidéo.  
-Elle est **actuellement en cours de développement**, et a pour but de démontrer mes compétences en :
-
-- Responsive design
-- Intégration de composants réutilisables
-- Systèmes de navigation adaptative (desktop/mobile)
+Elle démontre mes compétences en **développement full stack**, de l’intégration d’API à la gestion utilisateur, avec une interface fluide et responsive.
 
 Le site est composé d’une **navbar fixe dégradée**, d’un **menu burger animé**, d’un champ de **recherche stylisé**, et d’un layout clair.  
-Le tout est construit avec **Next.js 15**, **React**, et stylisé via **CSS Modules**.
+Le tout est construit avec **Next.js 14**, **React**, et stylisé via **CSS Modules**.
+
+L’interface s’inspire de l’UX des grandes plateformes (Netflix, Plex…), et fonctionne aussi bien sur desktop que mobile.
 
 ---
 
 ## 🔧 Fonctionnalités techniques
 
 - Appels dynamiques à l’API [TMDb](https://www.themoviedb.org/)
-- Routing dynamique (`/film/[id]`) avec pré-rendu statique
-- Affichage conditionnel avec `IntersectionObserver`
-- Animation d’apparition des cartes films
+- Routing dynamique (`/film/[id]` et `/serie/[id]`) avec pré-rendu statique
+- Ajout et suppression de favoris (MongoDB)
+- Attribution de notes personnelles
+- Espace utilisateur : avatar, email, mot de passe, suppression
+- Authentification custom (JWT, bcrypt)
 - Barre de recherche reliée à une route `/recherche` avec `useSearchParams`
-- Fiches détaillées pour chaque film (poster, synopsis, genres, date, note)
-- Utilisation des options `{ next: { revalidate: 3600 } }` pour l’ISR
+- Décodage du token pour affichage conditionnel
+
+---
+
+## 📦 Stack technique
+
+- Next.js 14 (App Router + ISR)
+- MongoDB avec Mongoose
+- TMDb API pour les données médias
+- Authentification personnalisée (sans NextAuth)
+- CSS Modules + animations légères
+- Déploiement sur Vercel
 
 ---
 
 ## 🤖 Ce que j’ai appris
 
-Développer **Flexstream** m’a permis de renforcer mes compétences sur :
-
-- L’organisation modulaire d’un projet React avec Next.js App Router
-- La gestion d’état et du cycle de vie (`useState`, `useEffect`, `useRef`)
-- Le système de routing dynamique et de paramètres d’URL
-- L'intégration d'une API REST externe (TMDb)
-- Le responsive design propre, sans framework CSS externe
+- Structurer une application complète avec frontend et backend dans Next.js
+- Sécuriser les échanges avec un système JWT
+- Gérer un profil utilisateur complet : avatar, favoris, mot de passe
+- Manipuler et stocker des données issues d’une API externe
+- Créer une interface utilisateur responsive sans framework CSS externe
 
 ---
 
-## 🚀 Prochaines évolutions
+## ✅ Statut du projet
 
-- 🎞️ Intégration des bandes-annonces via l'API de TMDb
-- 💾 Ajout d’un système de favoris local avec `localStorage`
-- 🪪 Système d’authentification avec NextAuth
-- 📱 Amélioration de l’UX mobile (animations, transitions)
+Flexstream est **terminé dans sa version 1.0**.  
+Il couvre l’ensemble du cycle utilisateur : navigation, recherche, authentification, personnalisation et favoris.
+
+🛠️ De futures évolutions sont prévues : ajout de commentaires, recommandations, filtres avancés...
 
 ---
 

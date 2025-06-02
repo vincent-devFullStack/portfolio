@@ -229,6 +229,18 @@ p {
   border-radius: 1.5rem;
 }
 
+.badgeTermine {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #28a745;
+  color: white;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  font-weight: 600;
+}
+
 .demo-image img {
   transition: transform 0.3s ease, filter 0.3s ease;
 }

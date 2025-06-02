@@ -8,43 +8,33 @@ import Hero from '../../components/Hero.astro';
 import Icon from '../../components/Icon.astro';
 import Pill from '../../components/Pill.astro';
 
-export const prerender = true; // Permet de pré-rendre cette page en HTML statique
+export const prerender = true;
 
-// Typage pour l'entrée "work"
 interface Props {
   entry: CollectionEntry<'work'>;
 }
 
-// Génère les chemins statiques pour chaque fichier dans content/work
 export async function getStaticPaths() {
   const allWork = await getCollection('work');
-  
-
-  
   if (!allWork || allWork.length === 0) {
     throw new Error('No work entries found.');
   }
 
-  // On mappe chaque fichier de la collection en un chemin (slug) + props
   return allWork.map((item) => ({
     params: { slug: item.id },
     props: { entry: item },
   }));
 }
 
-// Récupère l'entrée (entry) passée via getStaticPaths
 const { entry } = Astro.props;
-
-// Si jamais entry est undefined, on lève une erreur pour déboguer
 if (!entry) {
   throw new Error('RenderUndefinedEntryError: "entry" est introuvable ou indéfini.');
 }
 
-// On rend le contenu Markdown
 const { Content } = await render(entry);
 ---
 
-<BaseLayout title={entry.data.title} description={entry.data.description}>
+<BaseLayout title={entry.data.title.replace(' ✅', '')} description={entry.data.description}>
   <div class="stack gap-20">
     <div class="stack gap-15">
       <header>
@@ -53,7 +43,7 @@ const { Content } = await render(entry);
             <Icon icon="arrow-left" />
             Mes Projets
           </a>
-          <Hero title={entry.data.title} align="start">
+          <Hero title={entry.data.title.replace(' ✅', '')} align="start">
             <div class="details">
               <div class="tags">
                 {entry.data.tags.map((t) => <Pill>{t}</Pill>)}
@@ -67,14 +57,19 @@ const { Content } = await render(entry);
         <div class="stack gap-10 content">
           {entry.data.img && (
             entry.data.demo ? (
-              <a href={entry.data.demo} target="_blank" rel="noopener noreferrer" aria-label={`Voir la démo de ${entry.data.title}`} class="demo-image">
+              <a
+                href={entry.data.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Voir la démo de ${entry.data.title.replace(' ✅', '')}`}
+                class="demo-image"
+              >
                 <img src={entry.data.img} alt={entry.data.img_alt || ''} loading="lazy" />
               </a>
             ) : (
-            <img src={entry.data.img} alt={entry.data.img_alt || ''} loading="lazy" />
+              <img src={entry.data.img} alt={entry.data.img_alt || ''} loading="lazy" />
             )
           )}
-          
           <div class="content">
             <Content />
           </div>
@@ -111,8 +106,8 @@ const { Content } = await render(entry);
   }
 
   .tags > .pill {
-  flex: 0 1 auto;
-}
+    flex: 0 1 auto;
+  }
 
   .description {
     font-size: var(--text-lg);
