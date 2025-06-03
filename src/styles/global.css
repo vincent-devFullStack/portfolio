@@ -224,6 +224,7 @@ p {
 }
 
 .demo-image {
+  position: relative;
   display: inline-block;
   overflow: hidden;
   border-radius: 1.5rem;
@@ -231,7 +232,7 @@ p {
 
 .badgeTermine {
   position: absolute;
-  top: 10px;
+  bottom: 15px;
   right: 10px;
   background-color: #28a745;
   color: white;
@@ -239,6 +240,7 @@ p {
   padding: 4px 8px;
   border-radius: 9999px;
   font-weight: 600;
+  z-index: 2;
 }
 
 .demo-image img {
