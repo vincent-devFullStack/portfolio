@@ -13,6 +13,7 @@ export const collections = {
       img: z.string(),
       img_alt: z.string().optional(),
       demo: z.string().url().optional(),
+      isMini: z.boolean().optional().default(false),
     }),
   }),
 };
