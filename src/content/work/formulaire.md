@@ -1,23 +1,141 @@
 ---
 title: "Formulaire ✅"
-publishDate: 2019-10-02 00:00:00
-img: /assets/stock-4.jpg
-img_alt: Soft pink and baby blue water ripples together in a subtle texture.
+publishDate: 2024-12-02 00:00:00
+img: /assets/formulaire.jpg
+img_alt: Capture d’écran d’un formulaire HTML simple avec champs de texte, bouton radio, case à cocher et menu déroulant, sur fond blanc.
 isMini: true
+demo: https://formulaire-demo.vercel.app/
 description: |
-  We developed brand positioning and design assets for the launch
-  of a new colored water product.
+  Formulaire HTML/CSS réalisé avant ma formation, pour découvrir les bases du développement web.
 tags:
-  - .
-  - .
+  - HTML
+  - CSS
+  - JS
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur posuere commodo venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam non ligula vel metus efficitur hendrerit. In hac habitasse platea dictumst. Praesent et mauris ut mi dapibus semper. Curabitur tortor justo, efficitur sit amet pretium cursus, porta eget odio. Cras ac venenatis dolor. Donec laoreet posuere malesuada. Curabitur nec mi tempor, placerat leo sit amet, tincidunt est. Quisque pellentesque venenatis magna, eget tristique nibh pulvinar in. Vestibulum vitae volutpat arcu. Aenean ut malesuada odio, sit amet pellentesque odio. Suspendisse nunc elit, blandit nec hendrerit non, aliquet at magna. Donec id leo ut nulla sagittis sodales.
+Ce projet a été réalisé avant ma formation en développement web.  
+J’ai voulu découvrir les bases de l’HTML et du CSS en créant un formulaire complet, avec différents types de champs, un peu de validation native et une toute première interaction en JavaScript vanilla pour l’envoi du formulaire.  
+Aujourd’hui, je referais ce formulaire de façon plus moderne (responsive, accessibilité…), mais il garde une vraie valeur pour mesurer ma progression !
 
-Integer vitae nibh elit. Suspendisse eget urna eu neque bibendum pharetra. Sed interdum lectus sem, in pulvinar magna dignissim vel. Quisque maximus at urna nec laoreet. Suspendisse potenti. Vestibulum rhoncus sem ut mi pellentesque, in vestibulum erat blandit. Aliquam sodales dui ac maximus consectetur. Duis quis est vehicula, imperdiet nisl nec, fermentum erat. Duis tortor diam, pharetra eu euismod in, vehicula non eros. Curabitur facilisis dui at erat ultrices gravida. In at nunc ultricies, pulvinar mi vel, sagittis mauris. Praesent pharetra posuere purus ac imperdiet. Nulla facilisi.
+---
 
-Sed pulvinar porttitor mi in ultricies. Etiam non dolor gravida eros pulvinar pellentesque et dictum ex. Proin eu ornare ligula, sed condimentum dui. Vivamus tincidunt tellus mi, sed semper ipsum pharetra a. Suspendisse sollicitudin at sapien nec volutpat. Etiam justo urna, laoreet ac lacus sed, ultricies facilisis dolor. Integer posuere, metus vel viverra gravida, risus elit ornare magna, id feugiat erat risus ullamcorper libero. Proin vitae diam auctor, laoreet lorem vitae, varius tellus.
+## 🔗 Liens utiles
 
-Mauris sed eros in ex maximus volutpat. Suspendisse potenti. Donec lacinia justo consectetur sagittis tempor. Proin ullamcorper nisi vitae auctor rhoncus. Sed tristique aliquam augue. Pellentesque vitae fringilla ligula. Nulla arcu elit, efficitur eu nunc malesuada, eleifend tincidunt orci. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer mattis orci in bibendum ultricies. Quisque a dui erat. Phasellus et vulputate ipsum. Proin metus ex, lobortis nec ornare eget, bibendum ut sapien. Aliquam in dolor lobortis, aliquam tellus a, congue augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+- 💻 Code source : [Voir sur GitHub](https://github.com/vincent-devFullStack/formulaire-demo.git)
+- 🚀 Démo en ligne : [Voir le formulaire](https://formulaire-demo.vercel.app/)
 
-Aenean pretium purus augue, ut bibendum erat convallis quis. Cras condimentum quis velit ac mollis. Suspendisse non purus fringilla, venenatis nisl porta, finibus odio. Curabitur aliquet metus faucibus libero interdum euismod. Morbi sed magna nisl. Morbi odio nibh, facilisis vel sapien eu, tempus tincidunt erat. Nullam erat velit, sagittis at purus quis, tristique scelerisque tortor. Pellentesque lacinia tortor id est aliquam viverra. Vestibulum et diam ac ipsum mollis fringilla.
+---
+
+<details>
+  <summary><b>Afficher le code HTML + JS</b></summary>
+
+```html
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulaire de démonstration</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Formulaire de démonstration</h1>
+    <form
+      action="traitement.php"
+      method="post"
+      onsubmit="return showConfirmation()"
+    >
+      <!-- Champ de texte -->
+      <label for="nom">Nom :</label>
+      <input
+        type="text"
+        id="nom"
+        name="nom"
+        required
+        pattern="[A-Za-zÀ-ÿ ]+"
+        title="Veuillez entrer uniquement des lettres."
+      /><br /><br />
+
+      <!-- Champ de texte -->
+      <label for="prenom">Prénom :</label>
+      <input
+        type="text"
+        id="prenom"
+        name="prenom"
+        required
+        pattern="[A-Za-zÀ-ÿ ]+"
+        title="Veuillez entrer uniquement des lettres."
+      />
+      <br /><br />
+
+      <!-- Champ de courriel -->
+      <label for="email">E-mail :</label>
+      <input type="email" id="email" name="email" required /><br /><br />
+
+      <!-- Case à cocher -->
+      <label for="newsletter">
+        Inscription à la newsletter :
+        <input type="checkbox" name="newsletter" id="newsletter" /> </label
+      ><br /><br />
+
+      <!-- Boutons radio -->
+      <label>Sélectionnez votre sexe :</label><br />
+      <input type="radio" id="homme" name="sexe" value="homme" />
+      <label for="homme">Homme</label><br />
+      <input type="radio" id="femme" name="sexe" value="femme" />
+      <label for="femme">Femme</label><br />
+      <input type="radio" id="autre" name="sexe" value="autre" checked />
+      <label for="autre">Autre</label><br /><br />
+
+      <!-- Menu déroulant -->
+      <label for="pays">Pays :</label>
+      <select name="pays" id="pays" required>
+        <option value="" disabled selected>Selectionnez un pays</option>
+        <option value="france">France</option>
+        <option value="belgique">Belgique</option>
+        <option value="canada">Canada</option>
+        <option value="suisse">Suisse</option></select
+      ><br /><br />
+
+      <!-- Champ de texte multiligne -->
+      <label for="commentaires">Commentaires :</label><br />
+      <textarea
+        name="commentaires"
+        id="commentaires"
+        rows="3"
+        cols="40"
+      ></textarea
+      ><br /><br />
+
+      <!-- Bouton de soumission -->
+      <input type="submit" value="Soumettre" />
+    </form>
+    <script>
+      function showConfirmation() {
+        alert("Votre formulaire a bien été soumis !");
+      }
+    </script>
+  </body>
+</html>
+```
+
+</details>
+
+<details>
+  <summary><b>Afficher le code CSS</b></summary>
+
+```css
+h1 {
+  text-align: center;
+}
+
+textarea {
+  resize: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+```

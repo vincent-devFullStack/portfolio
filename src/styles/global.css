@@ -197,6 +197,12 @@ p {
   margin-inline: auto;
 }
 
+.mini-desc {
+  text-align: left;
+  margin-left: 0;
+  margin-bottom: 3vh;
+}
+
 /* Utilities */
 
 .sr-only {
