@@ -89,6 +89,32 @@ const projects = (await getCollection('work'))
 
 			<section class="section with-background bg-variant">
 				<header class="section-header stack gap-2 lg:gap-4">
+					<h3>Stack à venir (Epitech pré-MSc)</h3>
+					<p>
+  Voici les technologies que je vais étudier à Epitech à partir de septembre 2025.
+</p>
+				</header>
+
+				<div class="gallery">
+					<Grid variant="small">
+						{
+							[
+              'PHP / MySQL',
+              'Java / Spring Boot',
+              'Vue.js / Angular',
+              'Ansible / Admin Système'
+            ].map((brand) => (
+								<li class="mention-card future-stack">
+									<p>{brand}</p>
+								</li>
+							))
+						}
+					</Grid>
+				</div>
+			</section>
+
+			<section class="section with-background bg-variant">
+				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Stack actuelle</h3>
 					<p>
 						Voici les technologies que j’utilise au quotidien, ou que j’ai eu l’occasion d’explorer.
@@ -253,6 +279,23 @@ const projects = (await getCollection('work'))
 		background: var(--gradient-subtle);
 		box-shadow: var(--shadow-sm);
 	}
+
+	.mention-card:hover {
+		background: var(--gradient-subtle-hover);
+		color: var(--gray-0);
+	}
+
+	.future-stack {
+  opacity: 0.4;
+  font-style: italic;
+  transition: all 0.3s ease;
+}
+
+.future-stack:hover {
+  opacity: 1;
+  font-style: normal;
+}
+
 
 	@media (max-width: 480px) {
 	
