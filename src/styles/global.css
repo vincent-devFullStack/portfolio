@@ -400,15 +400,15 @@ html {
 
 @media (max-width: 480px) {
   html {
-    font-size: 85%;
+    font-size: 90%;
   }
 
   p {
-    font-size: var(--text-sm); /* 0.875rem */
+    font-size: var(--text-base);
   }
 
   .section-header p {
-    font-size: var(--text-sm);
+    font-size: var(--text-base);
   }
 
   .mention-card p {
@@ -417,12 +417,12 @@ html {
 
   .hero p,
   .hero .roles {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 
   /* Bonus : lien et listes */
   a,
   li {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 }
