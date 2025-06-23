@@ -3,60 +3,127 @@ import Icon from './Icon.astro';
 ---
 
 <section class="box skills">
-	<div class="stack gap-2 lg:gap-4 ">
+	<div class="intro stack gap-2 lg:gap-4">
 		<Icon icon="terminal-window" color="var(--accent-regular)" size="2.5rem" gradient />
 		<h2>Full Stack</h2>
-		<p>Développement complet d’applications web et mobiles avec une approche front-end et back-end. Maîtrise des technologies modernes comme React, Node.js, MongoDB, et Express.</p>
+		<p>
+			Développement complet d’applications web et mobiles avec une approche front-end et back-end. Maîtrise des technologies modernes comme React, Node.js, MongoDB, et Express.
+		</p>
 	</div>
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="brain" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Projets en cours</h2>
-		<h3>3</h3>
-	</div>
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="trophy" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Projets terminés</h2>
-		<h3>2</h3>
+
+	<div class="projects">
+		<div class="project-block stack gap-2 lg:gap-4">
+			<Icon icon="brain" color="var(--accent-regular)" size="2.5rem" gradient />
+			<h2>Projets en cours</h2>
+			<h3>3</h3>
+		</div>
+		<div class="project-block stack gap-2 lg:gap-4">
+			<Icon icon="trophy" color="var(--accent-regular)" size="2.5rem" gradient />
+			<h2>Projets terminés</h2>
+			<h3>2</h3>
+		</div>
 	</div>
 </section>
 
 <style>
+.box {
+	border: 1px solid var(--gray-800);
+	border-radius: 0.75rem;
+	padding: 1.5rem;
+	background-color: var(--gray-999_40);
+	box-shadow: var(--shadow-sm);
+}
+
+.skills {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.intro h2 {
+	font-size: var(--text-lg);
+}
+
+.intro p {
+	color: var(--gray-400);
+	font-size: 0.95rem;
+}
+
+.projects {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.project-block {
+	flex: 1;
+	align-items: center;
+	text-align: center;
+}
+
+.project-block h2 {
+	font-size: 1rem;
+}
+
+.project-block h3 {
+	font-size: 0.9rem;
+}
+
+@media (min-width: 50em) {
 	.box {
-		border: 1px solid var(--gray-800);
-		border-radius: 0.75rem;
-		padding: 1.5rem;
-		background-color: var(--gray-999_40);
-		box-shadow: var(--shadow-sm);
+		border-radius: 1.5rem;
+		padding: 2.5rem;
 	}
 
 	.skills {
-		display: flex;
-		flex-direction: column;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5rem;
+	}
+
+	.intro h2 {
+		font-size: var(--text-2xl);
+	}
+
+	.intro p {
+		font-size: var(--text-base);
+	}
+
+	.projects {
+		flex-direction: row;
 		gap: 3rem;
+		justify-content: flex-start;
 	}
 
-	.skills h2 {
-		font-size: var(--text-lg);
+	.project-block h2 {
+		font-size: 1.25rem;
 	}
 
-	.skills p {
-		color: var(--gray-400);
+	.project-block h3 {
+		font-size: 1.125rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.box.skills {
+		padding: 1rem;
+		gap: 2rem;
 	}
 
-	@media (min-width: 50em) {
-		.box {
-			border-radius: 1.5rem;
-			padding: 2.5rem;
-		}
-
-		.skills {
-			display: grid;
-			grid-template-columns: repeat(3, 1fr);
-			gap: 5rem;
-		}
-
-		.skills h2 {
-			font-size: var(--text-2xl);
-		}
+	.projects {
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: flex-start;
+		gap: 1rem;
 	}
+
+	.project-block h2 {
+		font-size: 0.85rem;
+	}
+
+	.project-block h3 {
+		font-size: 0.8rem;
+	}
+}
 </style>
