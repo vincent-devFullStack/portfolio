@@ -397,3 +397,18 @@ html {
     gap: 12rem;
   }
 }
+
+@media (max-width: 480px) {
+  details pre code {
+    font-size: 0.7rem;
+    padding: 0.75rem;
+    max-width: 95vw;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  details {
+    margin-inline: auto;
+    width: 90%;
+  }
+}
