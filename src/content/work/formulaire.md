@@ -15,7 +15,7 @@ tags:
 
 Ce projet a été réalisé avant ma formation en développement web.  
 J’ai voulu découvrir les bases de l’HTML et du CSS en créant un formulaire complet, avec différents types de champs, un peu de validation native et une toute première interaction en JavaScript vanilla pour l’envoi du formulaire.  
-Aujourd’hui, je referais ce formulaire de façon plus moderne (responsive, accessibilité…), mais il garde une vraie valeur pour mesurer ma progression !
+Aujourd’hui, je referais ce formulaire de façon plus moderne (responsive, accessibilité…), mais il garde une vraie valeur pour mesurer ma progression.
 
 ---
 

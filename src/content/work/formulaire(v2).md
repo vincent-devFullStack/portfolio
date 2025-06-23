@@ -14,7 +14,7 @@ tags:
 ---
 
 **Note :** Ce formulaire a été conçu pour aller plus loin que mon premier essai.  
-J’ai voulu intégrer une validation JavaScript, des messages d’erreur, et une interface plus soignée : une étape clé avant d’attaquer ma formation pro !
+J’ai voulu intégrer une validation JavaScript, des messages d’erreur, et une interface plus soignée : une étape clé avant d’attaquer ma formation.
 
 ---
 
