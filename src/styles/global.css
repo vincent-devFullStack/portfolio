@@ -400,15 +400,15 @@ html {
 
 @media (max-width: 480px) {
   html {
-    font-size: 90%;
+    font-size: 95%;
   }
 
   p {
-    font-size: var(--text-base);
+    font-size: var(--text-md);
   }
 
   .section-header p {
-    font-size: var(--text-base);
+    font-size: var(--text-md);
   }
 
   .mention-card p {
