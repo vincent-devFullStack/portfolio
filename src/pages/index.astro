@@ -233,6 +233,10 @@ const projects = (await getCollection('work'))
 		.cta {
 			grid-area: cta;
 		}
+		.mention-card {
+			border-radius: 1.5rem;
+			height: 9.5rem;
+		}
 	}
 
 	/* ====================================================== */
@@ -250,10 +254,21 @@ const projects = (await getCollection('work'))
 		box-shadow: var(--shadow-sm);
 	}
 
-	@media (min-width: 50em) {
+	@media (max-width: 480px) {
+	
 		.mention-card {
+			display: flex;
+			height: 7rem;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			font-size: 3rem;
+			border: 1px solid var(--gray-800);
 			border-radius: 1.5rem;
-			height: 9.5rem;
-		}
+			color: var(--gray-300);
+			background: var(--gradient-subtle);
+			box-shadow: var(--shadow-sm);
+		} 
+		
 	}
 </style>

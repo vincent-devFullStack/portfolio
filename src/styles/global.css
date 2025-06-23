@@ -399,16 +399,30 @@ html {
 }
 
 @media (max-width: 480px) {
-  details pre code {
-    font-size: 0.7rem;
-    padding: 0.75rem;
-    max-width: 95vw;
-    white-space: pre-wrap;
-    word-break: break-word;
+  html {
+    font-size: 85%;
   }
 
-  details {
-    margin-inline: auto;
-    width: 90%;
+  p {
+    font-size: var(--text-sm); /* 0.875rem */
+  }
+
+  .section-header p {
+    font-size: var(--text-sm);
+  }
+
+  .mention-card p {
+    font-size: 1.2rem;
+  }
+
+  .hero p,
+  .hero .roles {
+    font-size: 0.9rem;
+  }
+
+  /* Bonus : lien et listes */
+  a,
+  li {
+    font-size: 0.9rem;
   }
 }
