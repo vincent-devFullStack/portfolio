@@ -51,6 +51,26 @@ const projects = (await getCollection('work'))
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);"
 				/>
 			</header>
+<section class="section with-background">
+  <header class="section-header stack gap-2 lg:gap-4 text-left items-start">
+
+    <h3>En recherche d'alternance</h3>
+    <p>
+      Je recherche une <strong>alternance à partir de janvier 2026</strong> pour poursuivre ma formation en développement web & mobile à <strong>Epitech Nice</strong>.
+    </p>
+    <p>
+      📍 Basé à Nice, ouvert au télétravail ou format hybride.
+    </p>
+  </header>
+
+  <div class="cta">
+  <CallToAction href="/CV-Vincent-Silvestri.pdf">
+  📄 Voir mon CV
+  <Icon icon="arrow-right" size="1.2em" />
+</CallToAction>
+
+
+</section>
 
 			<Skills />
 		</div>
@@ -91,8 +111,8 @@ const projects = (await getCollection('work'))
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Stack à venir (Epitech pré-MSc)</h3>
 					<p>
-  Voici les technologies que je vais étudier à Epitech à partir de septembre 2025.
-</p>
+					Voici les technologies que je vais étudier à Epitech à partir de septembre 2025.
+					</p>
 				</header>
 
 				<div class="gallery">
@@ -216,11 +236,12 @@ const projects = (await getCollection('work'))
 	}
 
 	.section-header {
-		justify-self: center;
-		text-align: center;
+		align-items: flex-start;
+  		text-align: left;
 		max-width: 50ch;
 		font-size: var(--text-md);
 		color: var(--gray-300);
+		
 	}
 
 	.section-header h3 {
@@ -312,6 +333,12 @@ const projects = (await getCollection('work'))
 			background: var(--gradient-subtle);
 			box-shadow: var(--shadow-sm);
 		} 
-		
+		.section-header {
+		justify-self: center;
+		text-align: center;
+		max-width: 50ch;
+		font-size: var(--text-md);
+		color: var(--gray-300);
+	}
 	}
 </style>
