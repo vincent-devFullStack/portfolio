@@ -1,6 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
-import { render } from 'astro:content';
+import { getCollection, getEntry, render } from 'astro:content';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
@@ -10,27 +9,39 @@ import Pill from '../../components/Pill.astro';
 
 export const prerender = true;
 
-interface Props {
-  entry: CollectionEntry<'work'>;
-}
-
 export async function getStaticPaths() {
   const allWork = await getCollection('work');
-  if (!allWork || allWork.length === 0) {
-    throw new Error('No work entries found.');
-  }
 
-  return allWork.map((item) => ({
-    params: { slug: item.id },
-    props: { entry: item },
-  }));
+  return allWork.map(({ id }) => {
+    return {
+      params: {
+        slug: id, // ✅ PAS `.split('/')`, juste une string
+      },
+      props: { id },
+    };
+  });
 }
 
-const { entry } = Astro.props;
+
+
+
+
+
+// ⚠️ Astro.params.slug est un tableau à cause de [...slug]
+// On récupère l'id transmis dans les props
+const { id } = Astro.props;
+if (!id) {
+  throw new Error('Slug introuvable dans Astro.props');
+}
+
+// 🔍 Récupération propre de l'entrée
+const entry = await getEntry('work', id);
+
 if (!entry) {
-  throw new Error('RenderUndefinedEntryError: "entry" est introuvable ou indéfini.');
+  throw new Error(`Aucune entrée trouvée pour le slug "${id}"`);
 }
 
+// 🧠 Génère le composant Markdown
 const { Content } = await render(entry);
 ---
 
