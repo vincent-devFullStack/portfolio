@@ -1,8 +1,38 @@
 ---
 import Hero from '../components/Hero.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+
+const canonicalUrl = "/404/";
 ---
 
-<BaseLayout title="Not Found" description="404 Error — this page was not found">
-	<Hero title="Page Not Found" tagline="Not found" />
+<BaseLayout title="Page non trouvée | Vincent Silvestri" description="404 Error — cette page n'existe pas.">
+  <SEO canonicalUrl={canonicalUrl} />
+  <main class="not-found stack gap-6">
+    <Hero
+      title="Page non trouvée"
+      tagline="La page demandée n'existe pas ou a été déplacée."
+    />
+  </main>
+
+  <style>
+    .not-found {
+      min-height: 55vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-block: 2rem;
+    }
+
+    .center {
+      display: flex;
+      justify-content: center;
+    }
+
+    @media (min-width: 50em) {
+      .not-found {
+        min-height: 65vh;
+      }
+    }
+  </style>
 </BaseLayout>
