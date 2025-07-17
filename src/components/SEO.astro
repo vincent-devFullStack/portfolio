@@ -1,6 +1,8 @@
 ---
-// src/components/SEO.astro
 const { canonicalUrl = "/" } = Astro.props;
 const fullCanonical = new URL(canonicalUrl, Astro.site).toString();
+const pathname = Astro.url.pathname;
+const is404 = pathname === "/404";
 ---
-<link rel="canonical" href={fullCanonical} />
+
+{!is404 && <link rel="canonical" href={fullCanonical} />}
