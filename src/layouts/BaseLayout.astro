@@ -1,7 +1,4 @@
 ---
-
-
-// Component Imports
 import MainHead from '../components/MainHead.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
@@ -12,61 +9,63 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+const pathname = Astro.url.pathname;
+const is404 = pathname === "/404";
+const canonicalUrl = new URL(pathname, Astro.site).toString();
 ---
 
 <html lang="fr">
 	<head>
 		<MainHead title={title} description={description} />
 
-<!-- HTML Meta Tags -->
-<title>Vincent Silvestri – Développeur Web & Mobile à Nice | Portfolio</title>
-<meta name="description" content="Portfolio de Vincent Silvestri, Développeur Web et Mobile à Nice, spécialisé en React, Node.js, MongoDB. Découvrez mes projets et compétences en développement web et mobile." />
-<meta name="author" content="Vincent Silvestri" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="theme-color" content="#ffffff" />
+		<!-- HTML Meta Tags -->
+		<title>Vincent Silvestri – Développeur Web & Mobile à Nice | Portfolio</title>
+		<meta name="description" content="Portfolio de Vincent Silvestri, Développeur Web et Mobile à Nice, spécialisé en React, Node.js, MongoDB. Découvrez mes projets et compétences en développement web et mobile." />
+		<meta name="author" content="Vincent Silvestri" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="theme-color" content="#ffffff" />
+		
+		<!-- Open Graph -->
+		<meta property="og:title" content="Vincent Silvestri – Développeur Web & Mobile" />
+		<meta property="og:description" content="Portfolio de Vincent Silvestri : projets, compétences, et contact pour vos idées web ou mobile." />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://www.vince-dev.fr/" />
+		<meta property="og:image" content="https://www.vince-dev.fr/assets/portrait-min.png" />
+		<meta property="og:image:alt" content="Vincent Silvestri - Développeur Web et Mobile" />
 
-<!-- Open Graph -->
-<meta property="og:title" content="Vincent Silvestri – Développeur Web & Mobile" />
-<meta property="og:description" content="Portfolio de Vincent Silvestri : projets, compétences, et contact pour vos idées web ou mobile." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.vince-dev.fr/" />
-<meta property="og:image" content="https://www.vince-dev.fr/assets/portrait-min.png" />
-<meta property="og:image:alt" content="Vincent Silvestri - Développeur Web et Mobile" />
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:domain" content="vince-dev.fr" />
+		<meta name="twitter:url" content="https://www.vince-dev.fr" />
+		<meta name="twitter:title" content="Vincent Silvestri – Développeur Web & Mobile" />
+		<meta name="twitter:description" content="Portfolio de Vincent Silvestri : projets, compétences, et contact pour vos idées web ou mobile." />
+		<meta name="twitter:image" content="https://www.vince-dev.fr/assets/portrait-min.png" />
+		<meta name="twitter:image:alt" content="Vincent Silvestri - Développeur Web et Mobile" />
 
+		<!-- Favicon -->
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta charset="UTF-8" />
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:domain" content="vince-dev.fr" />
-<meta name="twitter:url" content="https://www.vince-dev.fr" />
-<meta name="twitter:title" content="Vincent Silvestri – Développeur Web & Mobile" />
-<meta name="twitter:description" content="Portfolio de Vincent Silvestri : projets, compétences, et contact pour vos idées web ou mobile." />
-<meta name="twitter:image" content="https://www.vince-dev.fr/assets/portrait-min.png" />
-<meta name="twitter:image:alt" content="Vincent Silvestri - Développeur Web et Mobile" /> 
+		<!-- Canonical (sauf pour la 404) -->
+		{!is404 && <link rel="canonical" href={canonicalUrl} />}
 
-
-<!-- Favicon -->
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<meta charset="UTF-8" />
-
-<link rel="canonical" href="https://www.vince-dev.fr/" />
-
-<script type="application/ld+json">
-	{
-	  "@context": "http://schema.org",
-	  "@type": "Person",
-	  "name": "Vincent Silvestri",
-	  "jobTitle": "Développeur Web et Mobile",
-	  "url": "https://www.vince-dev.fr",
-	  "sameAs": [
-		"https://www.linkedin.com/in/vincent-silvestri/",
-		"https://github.com/vincent-silvestri"
-	  ]
-	}
-	</script>
-	
-
+		<!-- JSON-LD Schema.org -->
+		<script type="application/ld+json">
+			{JSON.stringify({
+				"@context": "http://schema.org",
+				"@type": "Person",
+				"name": "Vincent Silvestri",
+				"jobTitle": "Développeur Web et Mobile",
+				"url": "https://www.vince-dev.fr",
+				"sameAs": [
+					"https://www.linkedin.com/in/vincent-silvestri/",
+					"https://github.com/vincent-silvestri"
+				]
+			})}
+		</script>
 	</head>
+
 	<body>
 		<div class="stack backgrounds">
 			<Nav />
@@ -102,8 +101,6 @@ const { title, description } = Astro.props;
 				--bg-blend-mode: lighten;
 			}
 
-			/* These backgrounds are displayed below the fold, so we lazy load them
-			   once the `.loaded` class has been set.  */
 			:root.loaded {
 				--bg-image-subtle-1: url('/assets/backgrounds/bg-subtle-1-light-800w.jpg');
 				--bg-image-subtle-2: url('/assets/backgrounds/bg-subtle-2-light-800w.jpg');
@@ -115,7 +112,6 @@ const { title, description } = Astro.props;
 				--bg-image-footer: url('/assets/backgrounds/bg-footer-dark-800w.jpg');
 			}
 
-
 			@media (min-width: 50em) {
 				:root {
 					--bg-scale: 1;
@@ -124,7 +120,6 @@ const { title, description } = Astro.props;
 				:root.theme-dark {
 					--bg-image-main: url('/assets/backgrounds/bg-main-dark-1440w.jpg');
 				}
-
 				:root.loaded {
 					--bg-image-subtle-1: url('/assets/backgrounds/bg-subtle-1-light-1440w.jpg');
 					--bg-image-subtle-2: url('/assets/backgrounds/bg-subtle-2-light-1440w.jpg');
@@ -141,21 +136,19 @@ const { title, description } = Astro.props;
 				min-height: 100%;
 				isolation: isolate;
 				background:
-					/*noise*/
 					url('/assets/backgrounds/noise.png') top center/220px repeat,
-					/*footer*/ var(--bg-image-footer) bottom center/var(--bg-gradient-size) no-repeat,
-					/*header1*/ var(--bg-image-main-curves) top center/var(--bg-gradient-size) no-repeat,
-					/*header2*/ var(--bg-image-main) top center/var(--bg-gradient-size) no-repeat,
-					/*base*/ var(--gray-999);
-				background-blend-mode: /*noise*/
+					var(--bg-image-footer) bottom center/var(--bg-gradient-size) no-repeat,
+					var(--bg-image-main-curves) top center/var(--bg-gradient-size) no-repeat,
+					var(--bg-image-main) top center/var(--bg-gradient-size) no-repeat,
+					var(--gray-999);
+				background-blend-mode:
 					overlay,
-					/*footer*/ var(--bg-blend-mode),
-					/*header1*/ var(--bg-svg-blend-mode),
-					/*header2*/ normal,
-					/*base*/ normal;
+					var(--bg-blend-mode),
+					var(--bg-svg-blend-mode),
+					normal,
+					normal;
 			}
 			@media (forced-colors: active) {
-				/* Deactivate custom backgrounds for high contrast users. */
 				.backgrounds {
 					background: none;
 					background-blend-mode: none;
