@@ -37,17 +37,17 @@
   </url>
 
   <url>
-    <loc>https://www.vince-dev.fr/work/nested/mgf-web/</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2019-12-01</lastmod>
-  </url>
-
-  <url>
     <loc>https://www.vince-dev.fr/work/nikaia/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <lastmod>2020-03-04</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.vince-dev.fr/work/nested/mgf-web/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2019-12-01</lastmod>
   </url>
 
   <url>
@@ -58,13 +58,6 @@
   </url>
 
   <url>
-    <loc>https://www.vince-dev.fr/work/cartemarvel/</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2024-12-02</lastmod>
-  </url>
-
-  <url>
     <loc>https://www.vince-dev.fr/work/formulaire/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
@@ -72,7 +65,7 @@
   </url>
 
   <url>
-    <loc>https://www.vince-dev.fr/work/mini-jeu/</loc>
+    <loc>https://www.vince-dev.fr/work/cartemarvel/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <lastmod>2024-12-02</lastmod>
@@ -80,6 +73,13 @@
 
   <url>
     <loc>https://www.vince-dev.fr/work/formulairev2/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2024-12-02</lastmod>
+  </url>
+
+  <url>
+    <loc>https://www.vince-dev.fr/work/mini-jeu/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
     <lastmod>2024-12-02</lastmod>
