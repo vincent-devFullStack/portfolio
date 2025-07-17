@@ -171,7 +171,7 @@ function createGetCollection({
       type === "content" ? contentCollectionToEntryMap[collection] : dataCollectionToEntryMap[collection]
     );
     let entries = [];
-    if (!Object.assign(__vite_import_meta_env__, {})?.DEV && cacheEntriesByCollection.has(collection)) {
+    if (!Object.assign(__vite_import_meta_env__, { _: process.env._ })?.DEV && cacheEntriesByCollection.has(collection)) {
       entries = cacheEntriesByCollection.get(collection);
     } else {
       const limit = pLimit(10);
@@ -308,7 +308,7 @@ const CONTENT_LAYER_IMAGE_REGEX = /__ASTRO_IMAGE_="([^"]+)"/g;
 async function updateImageReferencesInBody(html, fileName) {
   const { default: imageAssetMap } = await import('./content-assets_DleWbedO.mjs');
   const imageObjects = /* @__PURE__ */ new Map();
-  const { getImage } = await import('./_astro_assets_D3_J1-5w.mjs').then(n => n._);
+  const { getImage } = await import('./_astro_assets_Cj9Pt6z1.mjs').then(n => n._);
   for (const [_full, imagePath] of html.matchAll(CONTENT_LAYER_IMAGE_REGEX)) {
     try {
       const decodedImagePath = JSON.parse(imagePath.replaceAll("&#x22;", '"'));
@@ -339,7 +339,7 @@ async function updateImageReferencesInBody(html, fileName) {
       src: image.src,
       srcset: image.srcSet.attribute,
       // This attribute is used by the toolbar audit
-      ...Object.assign(__vite_import_meta_env__, {}).DEV ? { "data-image-component": "true" } : {}
+      ...Object.assign(__vite_import_meta_env__, { _: process.env._ }).DEV ? { "data-image-component": "true" } : {}
     }).map(([key, value]) => value ? `${key}="${escape(value)}"` : "").join(" ");
   });
 }
