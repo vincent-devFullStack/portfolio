@@ -1,0 +1,6 @@
+---
+// src/components/SEO.astro
+const { canonicalUrl = "/" } = Astro.props;
+const fullCanonical = new URL(canonicalUrl, Astro.site).toString();
+---
+<link rel="canonical" href={fullCanonical} />

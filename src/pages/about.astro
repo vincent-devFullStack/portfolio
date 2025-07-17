@@ -1,11 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
+import SEO from "../components/SEO.astro";
 import ContactCTA from '../components/ContactCTA.astro';
 import Hero from '../components/Hero.astro';
+
+const canonicalUrl = "/about/";
 ---
 
 <BaseLayout title="À propos | Vincent Silvestri" description="À propos de Vincent Silvestri">
+	<SEO canonicalUrl={canonicalUrl} />
 	<div class="stack gap-20">
 		<main class="wrapper about">
 			<Hero
