@@ -56,11 +56,20 @@ const canonicalUrl = new URL(pathname, Astro.site).toString();
     <link
       rel="preload"
       as="image"
+      href="/assets/backgrounds/bg-subtle-2-light-1440w.avif"
+      type="image/avif"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      rel="preload"
+      as="image"
       href="/assets/backgrounds/bg-subtle-2-dark-1440w.avif"
       type="image/avif"
+      media="(prefers-color-scheme: dark)"
     />
   </>
 ) : null}
+
 
 
 
