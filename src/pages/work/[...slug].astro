@@ -1,4 +1,5 @@
 ---
+// ... imports inchangés
 import { getCollection, getEntry, render } from 'astro:content';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -14,34 +15,19 @@ export async function getStaticPaths() {
 
   return allWork.map(({ id }) => {
     return {
-      params: {
-        slug: id, // ✅ PAS `.split('/')`, juste une string
-      },
+      params: { slug: id },
       props: { id },
     };
   });
 }
 
-
-
-
-
-
-// ⚠️ Astro.params.slug est un tableau à cause de [...slug]
-// On récupère l'id transmis dans les props
+// Props & entrée
 const { id } = Astro.props;
-if (!id) {
-  throw new Error('Slug introuvable dans Astro.props');
-}
+if (!id) throw new Error('Slug introuvable dans Astro.props');
 
-// 🔍 Récupération propre de l'entrée
 const entry = await getEntry('work', id);
+if (!entry) throw new Error(`Aucune entrée trouvée pour le slug "${id}"`);
 
-if (!entry) {
-  throw new Error(`Aucune entrée trouvée pour le slug "${id}"`);
-}
-
-// 🧠 Génère le composant Markdown
 const { Content } = await render(entry);
 ---
 
@@ -75,10 +61,20 @@ const { Content } = await render(entry);
                 aria-label={`Voir la démo de ${entry.data.title.replace(' ✅', '')}`}
                 class="demo-image"
               >
-                <img src={entry.data.img} alt={entry.data.img_alt || ''} loading="lazy" />
+                <img
+                  src={entry.data.img}
+                  alt={entry.data.img_alt || ''}
+                  loading="lazy"
+                  class="responsive-img"
+                />
               </a>
             ) : (
-              <img src={entry.data.img} alt={entry.data.img_alt || ''} loading="lazy" />
+              <img
+                src={entry.data.img}
+                alt={entry.data.img_alt || ''}
+                loading="lazy"
+                class="responsive-img"
+              />
             )
           )}
           <div class="content">
@@ -95,6 +91,10 @@ const { Content } = await render(entry);
   header {
     padding-bottom: 2.5rem;
     border-bottom: 1px solid var(--gray-800);
+  }
+
+  main.wrapper {
+    min-height: 60vh;
   }
 
   .back-link {
@@ -142,12 +142,17 @@ const { Content } = await render(entry);
     margin: 1.5rem 0;
   }
 
-  .content :global(img) {
-    border-radius: 1.5rem;
-    box-shadow: var(--shadow-sm);
-    background: var(--gradient-subtle);
-    border: 1px solid var(--gray-800);
-  }
+  .content :global(img),
+  .responsive-img {
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  background: var(--gradient-subtle);
+  border: 1px solid var(--gray-800);
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 
   .content :global(blockquote) {
     font-size: var(--text-lg);
