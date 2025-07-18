@@ -1,5 +1,4 @@
 ---
-// ... imports inchangés
 import { getCollection, getEntry, render } from 'astro:content';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -15,19 +14,33 @@ export async function getStaticPaths() {
 
   return allWork.map(({ id }) => {
     return {
-      params: { slug: id },
+      params: {
+        slug: id, 
+      },
       props: { id },
     };
   });
 }
 
-// Props & entrée
+
+
+
+
+
+
 const { id } = Astro.props;
-if (!id) throw new Error('Slug introuvable dans Astro.props');
+if (!id) {
+  throw new Error('Slug introuvable dans Astro.props');
+}
 
+// 🔍 Récupération propre de l'entrée
 const entry = await getEntry('work', id);
-if (!entry) throw new Error(`Aucune entrée trouvée pour le slug "${id}"`);
 
+if (!entry) {
+  throw new Error(`Aucune entrée trouvée pour le slug "${id}"`);
+}
+
+// 🧠 Génère le composant Markdown
 const { Content } = await render(entry);
 ---
 
@@ -61,20 +74,10 @@ const { Content } = await render(entry);
                 aria-label={`Voir la démo de ${entry.data.title.replace(' ✅', '')}`}
                 class="demo-image"
               >
-                <img
-                  src={entry.data.img}
-                  alt={entry.data.img_alt || ''}
-                  loading="lazy"
-                  class="responsive-img"
-                />
+                <img src={entry.data.img} alt={entry.data.img_alt || ''} loading="lazy" />
               </a>
             ) : (
-              <img
-                src={entry.data.img}
-                alt={entry.data.img_alt || ''}
-                loading="lazy"
-                class="responsive-img"
-              />
+              <img src={entry.data.img} alt={entry.data.img_alt || ''} loading="lazy" />
             )
           )}
           <div class="content">
@@ -93,10 +96,6 @@ const { Content } = await render(entry);
     border-bottom: 1px solid var(--gray-800);
   }
 
-  main.wrapper {
-    min-height: 60vh;
-  }
-
   .back-link {
     display: none;
   }
@@ -113,7 +112,8 @@ const { Content } = await render(entry);
   .tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.4rem;
+    justify-content: center;
   }
 
   .tags > .pill {
@@ -142,7 +142,7 @@ const { Content } = await render(entry);
     margin: 1.5rem 0;
   }
 
-  .content :global(img),
+    .content :global(img),
   .responsive-img {
   border-radius: 1.5rem;
   box-shadow: var(--shadow-sm);
@@ -150,9 +150,7 @@ const { Content } = await render(entry);
   border: 1px solid var(--gray-800);
   width: 100%;
   height: auto;
-  display: block;
 }
-
 
   .content :global(blockquote) {
     font-size: var(--text-lg);
