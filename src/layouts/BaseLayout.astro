@@ -52,18 +52,19 @@ const canonicalUrl = new URL(pathname, Astro.site).toString();
 
 		<!-- JSON-LD Schema.org -->
 		<script type="application/ld+json">
-			{JSON.stringify({
-				"@context": "http://schema.org",
-				"@type": "Person",
-				"name": "Vincent Silvestri",
-				"jobTitle": "Développeur Web et Mobile",
-				"url": "https://www.vince-dev.fr",
-				"sameAs": [
-					"https://www.linkedin.com/in/vincent-silvestri/",
-					"https://github.com/vincent-silvestri"
-				]
-			})}
-		</script>
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Vincent Silvestri",
+  "jobTitle": "Développeur Web et Mobile",
+  "url": "https://www.vince-dev.fr",
+  "sameAs": [
+    "https://www.linkedin.com/in/vincent-silvestri/",
+    "https://github.com/vincent-silvestri"
+  ]
+}
+</script>
+
 	</head>
 
 	<body>
