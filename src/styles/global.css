@@ -256,6 +256,7 @@ p {
   font-weight: 600;
   z-index: 2;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 0 0.5px rgb(48, 255, 134);
 }
 
 .demo-image img {
