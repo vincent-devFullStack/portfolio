@@ -2,6 +2,7 @@
 title: "Formulaire ✅"
 publishDate: 2024-12-02 00:00:00
 img: /assets/formulaire.avif
+imgMobile: "/assets/formulaire-mobile.avif"
 img_alt: Capture d’écran d’un formulaire HTML simple avec champs de texte, bouton radio, case à cocher et menu déroulant, sur fond blanc.
 isMini: true
 demo: https://formulaire-demo.vercel.app/

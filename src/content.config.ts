@@ -14,6 +14,7 @@ export const collections = {
       img_alt: z.string().optional(),
       demo: z.string().url().optional(),
       isMini: z.boolean().optional().default(false),
+      imgMobile: z.string().optional(),
     }),
   }),
 };

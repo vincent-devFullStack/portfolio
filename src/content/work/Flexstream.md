@@ -2,6 +2,7 @@
 title: "Flexstream ✅"
 publishDate: 2025-04-13
 img: /assets/flexstream.avif
+imgMobile: "/assets/flexstream-mobile.avif"
 img_alt: Capture de la page d'accueil de l'application Flexstream, avec navbar dégradée et menu responsive.
 demo: https://flexstream.vercel.app
 description: |

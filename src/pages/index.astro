@@ -95,7 +95,19 @@ const projects = (await getCollection('work'))
 							projects.map((project) => (
 								<li>
 									<a class="demo-image" href={`/work/${project.id}`}>
-										<img src={project.data.img} alt={project.data.img_alt || ''} loading="lazy" />
+										<picture>
+  {project.data.imgMobile && (
+    <source srcset={project.data.imgMobile} media="(max-width: 768px)" />
+  )}
+  <img
+    src={project.data.img}
+    alt={project.data.img_alt || ''}
+    loading="lazy"
+    width="640"
+    height="360"
+  />
+</picture>
+
 										{project.data.title.includes('✅') && (
 											<span class="badgeTermine">Terminé</span>
 										)}
