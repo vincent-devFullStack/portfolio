@@ -49,15 +49,21 @@ const projects = (await getCollection('work'))
 				</Hero>
 
 				<img
-					alt="Portrait de Vincent Silvestri, Développeur Web et Mobile basé à Nice"
-					width="1200"
-					height="630"
-          fetchpriority="high"
-					src="/assets/portrait-min.webp"
-					style="mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+  alt="Portrait de Vincent Silvestri, Développeur Web et Mobile basé à Nice"
+  src="/assets/portrait-min.webp"
+  fetchpriority="high"
+  width="360"
+  height="480"
+  style="
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
     -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);"
-				/>
+/>
+
+
 			</header>
 <section class="section with-background">
   <header class="section-header stack gap-2 lg:gap-4 text-left items-start">
