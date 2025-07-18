@@ -45,13 +45,21 @@ const canonicalUrl = new URL(pathname, Astro.site).toString();
 		<meta name="twitter:image:alt" content="Vincent Silvestri - Développeur Web et Mobile" />
 
 {isHome ? (
-  <link
-    rel="preload"
-    as="image"
-    href="/assets/portrait-min.webp"
-    type="image/webp"
-    fetchpriority="high"
-  />
+  <>
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/portrait-min.webp"
+      type="image/webp"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/backgrounds/bg-subtle-2-dark-1440w.jpg"
+      type="image/jpeg"
+    />
+  </>
 ) : null}
 
 
