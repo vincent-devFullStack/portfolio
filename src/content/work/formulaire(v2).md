@@ -1,7 +1,7 @@
 ---
 title: "Formulaire (v2) ✅"
 publishDate: 2024-12-02 00:00:00
-img: /assets/formulaire2.jpg
+img: /assets/formulaire2.avif
 img_alt: Formulaire de contact moderne avec champs alignés et bouton orange.
 isMini: true
 demo: https://formulaire-v2.vercel.app/

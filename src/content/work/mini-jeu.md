@@ -1,7 +1,7 @@
 ---
 title: "Mini-Jeu ✅"
 publishDate: 2024-12-02 00:00:00
-img: /assets/miniJeu.jpg
+img: /assets/miniJeu.avif
 img_alt: Jeu d’entraînement simple avec deux cercles animés à cliquer, sur fond sombre.
 isMini: true
 demo: https://mini-jeu-phi.vercel.app/

@@ -1,7 +1,7 @@
 ---
 title: "Carte de jeu ✅"
 publishDate: 2024-12-02 00:00:00
-img: /assets/carteMarvel.jpg
+img: /assets/carteMarvel.avif
 img_alt: Carte de jeu Marvel représentant Hulk, design inspiré des jeux de cartes à collectionner.
 isMini: true
 demo: https://carte-marvel.vercel.app/
