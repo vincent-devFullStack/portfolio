@@ -1,190 +1,199 @@
 ---
-import MainHead from '../components/MainHead.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import '../styles/global.css';
 
 interface Props {
-	title?: string | undefined;
-	description?: string | undefined;
+  title?: string;
+  description?: string;
+  canonical?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, canonical } = Astro.props;
+
 const pathname = Astro.url.pathname;
 const is404 = pathname === "/404";
-const isHome = pathname === "/";
-const canonicalUrl = new URL(pathname, Astro.site).toString();
+const defaultCanonical = new URL(pathname, Astro.site).toString();
+const canonicalUrl = canonical ?? defaultCanonical;
 ---
 
-
 <html lang="fr">
-	<head>
-		<MainHead title={title} description={description} />
-
-		<!-- HTML Meta Tags -->
-		<title>Vincent Silvestri – Développeur Web & Mobile à Nice | Portfolio</title>
-		<meta name="description" content="Portfolio de Vincent Silvestri, Développeur Web et Mobile à Nice, spécialisé en React, Node.js, MongoDB. Découvrez mes projets et compétences en développement web et mobile." />
-		<meta name="author" content="Vincent Silvestri" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="theme-color" content="#ffffff" />
-		
-		<!-- Open Graph -->
-		<meta property="og:title" content="Vincent Silvestri – Développeur Web & Mobile" />
-		<meta property="og:description" content="Portfolio de Vincent Silvestri : projets, compétences, et contact pour vos idées web ou mobile." />
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://www.vince-dev.fr/" />
-		<meta property="og:image" content="https://www.vince-dev.fr/assets/portrait-min.webp" />
-		<meta property="og:image:alt" content="Vincent Silvestri - Développeur Web et Mobile" />
-
-		<!-- Twitter -->
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:domain" content="vince-dev.fr" />
-		<meta name="twitter:url" content="https://www.vince-dev.fr" />
-		<meta name="twitter:title" content="Vincent Silvestri – Développeur Web & Mobile" />
-		<meta name="twitter:description" content="Portfolio de Vincent Silvestri : projets, compétences, et contact pour vos idées web ou mobile." />
-		<meta name="twitter:image" content="https://www.vince-dev.fr/assets/portrait-min.webp" />
-		<meta name="twitter:image:alt" content="Vincent Silvestri - Développeur Web et Mobile" />
-
-{isHome ? (
-    <link
-      rel="preload"
-      as="image"
-      href="/assets/portrait-min.webp"
-      type="image/webp"
-      fetchpriority="high"
-    />
- 
-) : null}
-
-
-
-
-
-		<!-- Favicon -->
-		<link rel="icon" href="/favicon.ico" type="image/x-icon">
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta charset="UTF-8" />
-
-		<!-- Canonical (sauf pour la 404) -->
-		{!is404 && <link rel="canonical" href={canonicalUrl} />}
-
-<!-- JSON-LD Schema.org -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Vincent Silvestri",
-  "jobTitle": "Développeur Web et Mobile",
-  "url": "https://www.vince-dev.fr",
-  "sameAs": [
-    "https://www.linkedin.com/in/vincent-silvestri/",
-    "https://github.com/vincent-silvestri"
-  ],
-  "image": "https://www.vince-dev.fr/assets/portrait-vincent-silvestri-developpeur.png",
-  "description": "Développeur full stack web et mobile. J'utilise React, Node.js, MongoDB, etc.",
-  "knowsAbout": [
-    "JavaScript",
-    "React",
-    "Node.js",
-    "MongoDB",
-    "UI/UX",
-    "Astro",
-    "Next.js"
-  ]
-}
+  <head>
+<script>
+  (function () {
+    try {
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = stored || (prefersDark ? 'dark' : 'light');
+      document.documentElement.classList.add(theme === 'dark' ? 'theme-dark' : 'theme-light');
+    } catch (e) {
+      console.error('Erreur de thème :', e);
+    }
+  })();
 </script>
 
 
-	</head>
+    <title>{title ? `${title} | Vincent Silvestri` : "Vincent Silvestri – Développeur Web & Mobile à Nice | Portfolio"}</title>
+    <meta name="description" content={description ?? "Portfolio de Vincent Silvestri, Développeur Web et Mobile à Nice, spécialisé en React, Node.js, MongoDB. Découvrez mes projets et compétences en développement web et mobile."} />
+    <meta name="author" content="Vincent Silvestri" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta charset="UTF-8" />
 
-	<body>
-		<div class="stack backgrounds">
-			<Nav />
-			<slot />
-			<Footer />
-		</div>
+    {!is404 && <link rel="canonical" href={canonicalUrl} />}
 
-		<script>
-			// Add “loaded” class once the document has completely loaded.
-			addEventListener('load', () => document.documentElement.classList.add('loaded'));
-		</script>
+    <!-- Open Graph -->
+    <meta property="og:title" content="Vincent Silvestri – Développeur Web & Mobile" />
+    <meta property="og:description" content="Portfolio de Vincent Silvestri : projets, compétences, et contact pour vos idées web ou mobile." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.vince-dev.fr/" />
+    <meta property="og:image" content="https://www.vince-dev.fr/assets/portrait-min.webp" />
+    <meta property="og:image:alt" content="Vincent Silvestri - Développeur Web et Mobile" />
 
-		<style>
-			:root {
-				--_placeholder-bg: linear-gradient(transparent, transparent);
-				--bg-image-main: url('/assets/backgrounds/bg-main-light-800w.avif');
-				--bg-image-main-curves: url('/assets/backgrounds/bg-main-light.svg');
-				--bg-image-subtle-1: var(--_placeholder-bg);
-				--bg-image-subtle-2: var(--_placeholder-bg);
-				--bg-image-footer: var(--_placeholder-bg);
-				--bg-svg-blend-mode: overlay;
-				--bg-blend-mode: darken;
-				--bg-image-aspect-ratio: 2.25;
-				--bg-scale: 1.68;
-				--bg-aspect-ratio: calc(var(--bg-image-aspect-ratio) / var(--bg-scale));
-				--bg-gradient-size: calc(var(--bg-scale) * 100%);
-			}
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:domain" content="vince-dev.fr" />
+    <meta name="twitter:url" content="https://www.vince-dev.fr" />
+    <meta name="twitter:title" content="Vincent Silvestri – Développeur Web & Mobile" />
+    <meta name="twitter:description" content="Portfolio de Vincent Silvestri : projets, compétences, et contact pour vos idées web ou mobile." />
+    <meta name="twitter:image" content="https://www.vince-dev.fr/assets/portrait-min.webp" />
+    <meta name="twitter:image:alt" content="Vincent Silvestri - Développeur Web et Mobile" />
 
-			:root.theme-dark {
-				--bg-image-main: url('/assets/backgrounds/bg-main-dark-800w.avif');
-				--bg-image-main-curves: url('/assets/backgrounds/bg-main-dark.svg');
-				--bg-svg-blend-mode: darken;
-				--bg-blend-mode: lighten;
-			}
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-			:root.loaded {
-				--bg-image-subtle-1: url('/assets/backgrounds/bg-subtle-1-light-800w.avif');
-				--bg-image-subtle-2: url('/assets/backgrounds/bg-subtle-2-light-800w.avif');
-				--bg-image-footer: url('/assets/backgrounds/bg-footer-light-800w.avif');
-			}
-			:root.loaded.theme-dark {
-				--bg-image-subtle-1: url('/assets/backgrounds/bg-subtle-1-dark-800w.avif');
-				--bg-image-subtle-2: url('/assets/backgrounds/bg-subtle-2-dark-800w.avif');
-				--bg-image-footer: url('/assets/backgrounds/bg-footer-dark-800w.avif');
-			}
+    <!-- Preload image only on home -->
+    {pathname === "/" && (
+      <link
+        rel="preload"
+        as="image"
+        href="/assets/portrait-min.webp"
+        type="image/webp"
+        fetchpriority="high"
+      />
+    )}
 
-			@media (min-width: 50em) {
-				:root {
-					--bg-scale: 1;
-					--bg-image-main: url('/assets/backgrounds/bg-main-light-1440w.avif');
-				}
-				:root.theme-dark {
-					--bg-image-main: url('/assets/backgrounds/bg-main-dark-1440w.avif');
-				}
-				:root.loaded {
-					--bg-image-subtle-1: url('/assets/backgrounds/bg-subtle-1-light-1440w.avif');
-					--bg-image-subtle-2: url('/assets/backgrounds/bg-subtle-2-light-1440w.avif');
-					--bg-image-footer: url('/assets/backgrounds/bg-footer-light-1440w.avif');
-				}
-				:root.loaded.theme-dark {
-					--bg-image-subtle-1: url('/assets/backgrounds/bg-subtle-1-dark-1440w.avif');
-					--bg-image-subtle-2: url('/assets/backgrounds/bg-subtle-2-dark-1440w.avif');
-					--bg-image-footer: url('/assets/backgrounds/bg-footer-dark-1440w.avif');
-				}
-			}
+    <!-- JSON-LD Schema.org -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "Vincent Silvestri",
+        jobTitle: "Développeur Web et Mobile",
+        url: "https://www.vince-dev.fr",
+        sameAs: [
+          "https://www.linkedin.com/in/vincent-silvestri/",
+          "https://github.com/vincent-silvestri"
+        ],
+        image: "https://www.vince-dev.fr/assets/portrait-vincent-silvestri-developpeur.png",
+        description: "Développeur full stack web et mobile. J'utilise React, Node.js, MongoDB, etc.",
+        knowsAbout: [
+          "JavaScript",
+          "React",
+          "Node.js",
+          "MongoDB",
+          "UI/UX",
+          "Astro",
+          "Next.js"
+        ]
+      })}
+    </script>
+  </head>
 
-			.backgrounds {
-				min-height: 100%;
-				isolation: isolate;
-				background:
-					url('/assets/backgrounds/noise.avif') top center/220px repeat,
-					var(--bg-image-footer) bottom center/var(--bg-gradient-size) no-repeat,
-					var(--bg-image-main-curves) top center/var(--bg-gradient-size) no-repeat,
-					var(--bg-image-main) top center/var(--bg-gradient-size) no-repeat,
-					var(--gray-999);
-				background-blend-mode:
-					overlay,
-					var(--bg-blend-mode),
-					var(--bg-svg-blend-mode),
-					normal,
-					normal;
-			}
-			@media (forced-colors: active) {
-				.backgrounds {
-					background: none;
-					background-blend-mode: none;
-					--bg-gradient-size: none;
-				}
-			}
-		</style>
-	</body>
+  <body>
+    <div class="stack backgrounds">
+      <Nav />
+      <slot />
+      <Footer />
+    </div>
+
+    <script>
+      addEventListener('load', () => document.documentElement.classList.add('loaded'));
+    </script>
+
+    <style>
+      :root {
+        --_placeholder-bg: linear-gradient(transparent, transparent);
+        --bg-image-main: url('/assets/backgrounds/bg-main-light-800w.avif');
+        --bg-image-main-curves: url('/assets/backgrounds/bg-main-light.svg');
+        --bg-image-subtle-1: var(--_placeholder-bg);
+        --bg-image-subtle-2: var(--_placeholder-bg);
+        --bg-image-footer: var(--_placeholder-bg);
+        --bg-svg-blend-mode: overlay;
+        --bg-blend-mode: darken;
+        --bg-image-aspect-ratio: 2.25;
+        --bg-scale: 1.68;
+        --bg-aspect-ratio: calc(var(--bg-image-aspect-ratio) / var(--bg-scale));
+        --bg-gradient-size: calc(var(--bg-scale) * 100%);
+      }
+
+      :root.theme-dark {
+        --bg-image-main: url('/assets/backgrounds/bg-main-dark-800w.avif');
+        --bg-image-main-curves: url('/assets/backgrounds/bg-main-dark.svg');
+        --bg-svg-blend-mode: darken;
+        --bg-blend-mode: lighten;
+      }
+
+      :root.loaded {
+        --bg-image-subtle-1: url('/assets/backgrounds/bg-subtle-1-light-800w.avif');
+        --bg-image-subtle-2: url('/assets/backgrounds/bg-subtle-2-light-800w.avif');
+        --bg-image-footer: url('/assets/backgrounds/bg-footer-light-800w.avif');
+      }
+
+      :root.loaded.theme-dark {
+        --bg-image-subtle-1: url('/assets/backgrounds/bg-subtle-1-dark-800w.avif');
+        --bg-image-subtle-2: url('/assets/backgrounds/bg-subtle-2-dark-800w.avif');
+        --bg-image-footer: url('/assets/backgrounds/bg-footer-dark-800w.avif');
+      }
+
+      @media (min-width: 50em) {
+        :root {
+          --bg-scale: 1;
+          --bg-image-main: url('/assets/backgrounds/bg-main-light-1440w.avif');
+        }
+
+        :root.theme-dark {
+          --bg-image-main: url('/assets/backgrounds/bg-main-dark-1440w.avif');
+        }
+
+        :root.loaded {
+          --bg-image-subtle-1: url('/assets/backgrounds/bg-subtle-1-light-1440w.avif');
+          --bg-image-subtle-2: url('/assets/backgrounds/bg-subtle-2-light-1440w.avif');
+          --bg-image-footer: url('/assets/backgrounds/bg-footer-light-1440w.avif');
+        }
+
+        :root.loaded.theme-dark {
+          --bg-image-subtle-1: url('/assets/backgrounds/bg-subtle-1-dark-1440w.avif');
+          --bg-image-subtle-2: url('/assets/backgrounds/bg-subtle-2-dark-1440w.avif');
+          --bg-image-footer: url('/assets/backgrounds/bg-footer-dark-1440w.avif');
+        }
+      }
+
+      .backgrounds {
+        min-height: 100%;
+        isolation: isolate;
+        background:
+          url('/assets/backgrounds/noise.avif') top center/220px repeat,
+          var(--bg-image-footer) bottom center/var(--bg-gradient-size) no-repeat,
+          var(--bg-image-main-curves) top center/var(--bg-gradient-size) no-repeat,
+          var(--bg-image-main) top center/var(--bg-gradient-size) no-repeat,
+          var(--gray-999);
+        background-blend-mode:
+          overlay,
+          var(--bg-blend-mode),
+          var(--bg-svg-blend-mode),
+          normal,
+          normal;
+      }
+
+      @media (forced-colors: active) {
+        .backgrounds {
+          background: none;
+          background-blend-mode: none;
+          --bg-gradient-size: none;
+        }
+      }
+    </style>
+  </body>
 </html>

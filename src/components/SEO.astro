@@ -1,8 +1,22 @@
 ---
-const { canonicalUrl = "/" } = Astro.props;
-const fullCanonical = new URL(canonicalUrl, Astro.site).toString();
+const { title = "Portfolio de Vincent Silvestri", description = "Développeur web & mobile à Nice. Découvrez mes projets, compétences et parcours.", canonicalUrl } = Astro.props;
+
+const site = Astro.site?.toString() ?? "https://www.vince-dev.fr";
 const pathname = Astro.url.pathname;
+const fullCanonical = canonicalUrl
+  ? new URL(canonicalUrl, site).toString()
+  : new URL(pathname, site).toString();
+
 const is404 = pathname === "/404";
 ---
 
 {!is404 && <link rel="canonical" href={fullCanonical} />}
+{title && <title>{title}</title>}
+{description && <meta name="description" content={description} />}
+<meta property="og:type" content="website" />
+<meta property="og:url" content={fullCanonical} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />

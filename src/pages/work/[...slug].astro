@@ -12,39 +12,23 @@ export const prerender = true;
 export async function getStaticPaths() {
   const allWork = await getCollection('work');
 
-  return allWork.map(({ id }) => {
-    return {
-      params: {
-        slug: id, 
-      },
-      props: { id },
-    };
-  });
+  return allWork.map(({ id }) => ({
+    params: { slug: id },
+    props: { id },
+  }));
 }
-
-
-
-
-
-
 
 const { id } = Astro.props;
-if (!id) {
-  throw new Error('Slug introuvable dans Astro.props');
-}
+if (!id) throw new Error('Slug introuvable dans Astro.props');
 
-// 🔍 Récupération propre de l'entrée
 const entry = await getEntry('work', id);
+if (!entry) throw new Error(`Aucune entrée trouvée pour le slug "${id}"`);
 
-if (!entry) {
-  throw new Error(`Aucune entrée trouvée pour le slug "${id}"`);
-}
-
-// 🧠 Génère le composant Markdown
 const { Content } = await render(entry);
+const canonicalUrl = `https://www.vince-dev.fr/work/${id}`;
+const title = entry.data.title.replace(' ✅', '');
 ---
-
-<BaseLayout title={entry.data.title.replace(' ✅', '')} description={entry.data.description}>
+<BaseLayout title={title} description={entry.data.description} canonical={canonicalUrl}>
   <div class="stack gap-20">
     <div class="stack gap-15">
       <header>
@@ -53,7 +37,7 @@ const { Content } = await render(entry);
             <Icon icon="arrow-left" />
             Mes Projets
           </a>
-          <Hero title={entry.data.title.replace(' ✅', '')} align="start">
+          <Hero title={title} align="start">
             <div class="details">
               <div class="tags">
                 {entry.data.tags.map((t) => <Pill>{t}</Pill>)}
@@ -71,7 +55,7 @@ const { Content } = await render(entry);
                 href={entry.data.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`Voir la démo de ${entry.data.title.replace(' ✅', '')}`}
+                aria-label={`Voir la démo de ${title}`}
                 class="demo-image"
               >
                 <img src={entry.data.img} alt={entry.data.img_alt || ''} loading="lazy" />
@@ -142,15 +126,15 @@ const { Content } = await render(entry);
     margin: 1.5rem 0;
   }
 
-    .content :global(img),
+  .content :global(img),
   .responsive-img {
-  border-radius: 1.5rem;
-  box-shadow: var(--shadow-sm);
-  background: var(--gradient-subtle);
-  border: 1px solid var(--gray-800);
-  width: 100%;
-  height: auto;
-}
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    background: var(--gradient-subtle);
+    border: 1px solid var(--gray-800);
+    width: 100%;
+    height: auto;
+  }
 
   .content :global(blockquote) {
     font-size: var(--text-lg);
