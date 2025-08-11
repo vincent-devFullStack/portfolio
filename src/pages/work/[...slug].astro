@@ -6,12 +6,12 @@ import ContactCTA from '../../components/ContactCTA.astro';
 import Hero from '../../components/Hero.astro';
 import Icon from '../../components/Icon.astro';
 import Pill from '../../components/Pill.astro';
+import SEO from '../../components/SEO.astro';
 
 export const prerender = true;
 
 export async function getStaticPaths() {
   const allWork = await getCollection('work');
-
   return allWork.map(({ id }) => ({
     params: { slug: id },
     props: { id },
@@ -25,10 +25,24 @@ const entry = await getEntry('work', id);
 if (!entry) throw new Error(`Aucune entrée trouvée pour le slug "${id}"`);
 
 const { Content } = await render(entry);
-const canonicalUrl = `https://www.vince-dev.fr/work/${id}`;
-const title = entry.data.title.replace(' ✅', '');
+const title = (entry.data.title || '').replace(' ✅', '');
+const canonicalPath = `/work/${id}/`; // <- relatif (SEO.astro fera l’absolu)
+const publishedTime = entry.data.publishDate instanceof Date
+  ? entry.data.publishDate.toISOString()
+  : entry.data.publishDate;
 ---
-<BaseLayout title={title} description={entry.data.description} canonical={canonicalUrl}>
+<BaseLayout title={title} description={entry.data.description}>
+  <SEO
+    type="article"
+    title={`${title} – Projet par Vincent Silvestri`}
+    description={entry.data.description}
+    canonicalUrl={canonicalPath}
+    image={entry.data.img}
+    imageAlt={entry.data.img_alt || title}
+    publishedTime={publishedTime}
+    tags={entry.data.tags || []}
+  />
+
   <div class="stack gap-20">
     <div class="stack gap-15">
       <header>
@@ -40,13 +54,16 @@ const title = entry.data.title.replace(' ✅', '');
           <Hero title={title} align="start">
             <div class="details">
               <div class="tags">
-                {entry.data.tags.map((t) => <Pill>{t}</Pill>)}
+                {(entry.data.tags || []).map((t) => <Pill>{t}</Pill>)}
               </div>
-              <p class="description">{entry.data.description}</p>
+              {entry.data.description && (
+                <p class="description">{entry.data.description}</p>
+              )}
             </div>
           </Hero>
         </div>
       </header>
+
       <main class="wrapper">
         <div class="stack gap-10 content">
           {entry.data.img && (
@@ -58,10 +75,10 @@ const title = entry.data.title.replace(' ✅', '');
                 aria-label={`Voir la démo de ${title}`}
                 class="demo-image"
               >
-                <img src={entry.data.img} alt={entry.data.img_alt || ''} loading="lazy" />
+                <img src={entry.data.img} alt={entry.data.img_alt || title} loading="lazy" />
               </a>
             ) : (
-              <img src={entry.data.img} alt={entry.data.img_alt || ''} loading="lazy" />
+              <img src={entry.data.img} alt={entry.data.img_alt || title} loading="lazy" />
             )
           )}
           <div class="content">
@@ -73,6 +90,7 @@ const title = entry.data.title.replace(' ✅', '');
     <ContactCTA />
   </div>
 </BaseLayout>
+
 
 <style>
   header {

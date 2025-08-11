@@ -1,44 +1,81 @@
 import { getCollection } from "astro:content";
 import type { APIRoute } from "astro";
 
-export const GET: APIRoute = async () => {
-  const today = new Date().toISOString().split("T")[0];
+export const GET: APIRoute = async ({ site }) => {
+  if (!site) {
+    // Assure-toi d'avoir "site" défini dans astro.config.mjs
+    // sinon remplace par ton domaine.
+    site = new URL("https://www.vince-dev.fr");
+  }
 
-  const staticPages = [
-    { url: "", priority: "1.0", changefreq: "monthly", lastmod: today },
-    { url: "about", priority: "0.7", changefreq: "yearly", lastmod: today },
-    { url: "work", priority: "0.8", changefreq: "monthly", lastmod: today },
+  const isoNow = new Date().toISOString();
+
+  const STATIC_PAGES = [
+    { path: "/", changefreq: "monthly", priority: "1.0", lastmod: isoNow },
+    { path: "/about/", changefreq: "yearly", priority: "0.7", lastmod: isoNow },
+    { path: "/work/", changefreq: "monthly", priority: "0.8", lastmod: isoNow },
   ];
 
-  const projects = await getCollection("work");
+  const allWork = await getCollection("work");
 
-  const dynamicPages = projects.map((project) => ({
-    url: `work/${project.id}`, // sans slash final
-    priority: "0.6",
+  type WorkData = {
+    title: string;
+    description: string;
+    publishDate: Date;
+    tags: string[];
+    img: string;
+    pinned: boolean;
+    isMini: boolean;
+    img_alt?: string;
+    demo?: string;
+    imgMobile?: string;
+    rank?: number;
+    draft?: boolean;
+    isPrivate?: boolean;
+  };
+
+  const published = allWork.filter(
+    (e: { data: WorkData }) =>
+      e.data?.draft !== true && e.data?.isPrivate !== true
+  );
+
+  published.sort((a, b) => {
+    const ad =
+      a.data.publishDate instanceof Date ? a.data.publishDate.getTime() : 0;
+    const bd =
+      b.data.publishDate instanceof Date ? b.data.publishDate.getTime() : 0;
+    return bd - ad;
+  });
+
+  const DYNAMIC_PAGES = published.map((p) => ({
+    path: `/work/${p.id}/`,
     changefreq: "yearly",
-    lastmod: project.data.publishDate?.toISOString().split("T")[0] ?? today,
+    priority: "0.6",
+    lastmod: (p.data.publishDate instanceof Date
+      ? p.data.publishDate
+      : new Date()
+    ).toISOString(),
   }));
 
-  const allPages = [...staticPages, ...dynamicPages];
+  const entries = [...STATIC_PAGES, ...DYNAMIC_PAGES];
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${allPages
-  .map(
-    (page) => `
-  <url>
-    <loc>https://www.vince-dev.fr/${page.url}</loc>
-    <changefreq>${page.changefreq}</changefreq>
-    <priority>${page.priority}</priority>
-    <lastmod>${page.lastmod}</lastmod>
-  </url>`
-  )
-  .join("\n")}
-</urlset>`;
+  const xml =
+    `<?xml version="1.0" encoding="UTF-8"?>\n` +
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+    entries
+      .map((e) => {
+        const loc = new URL(e.path, site!).toString();
+        return `  <url>
+    <loc>${loc}</loc>
+    <changefreq>${e.changefreq}</changefreq>
+    <priority>${e.priority}</priority>
+    <lastmod>${e.lastmod}</lastmod>
+  </url>`;
+      })
+      .join("\n") +
+    `\n</urlset>`;
 
   return new Response(xml, {
-    headers: {
-      "Content-Type": "application/xml",
-    },
+    headers: { "Content-Type": "application/xml; charset=utf-8" },
   });
 };

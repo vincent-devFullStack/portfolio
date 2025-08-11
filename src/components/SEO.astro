@@ -1,5 +1,27 @@
 ---
-const { title = "Portfolio de Vincent Silvestri", description = "Développeur web & mobile à Nice. Découvrez mes projets, compétences et parcours.", canonicalUrl } = Astro.props;
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalUrl?: string; 
+  image?: string;        
+  imageAlt?: string;
+  type?: 'website' | 'article'; 
+  noindex?: boolean;   
+  publishedTime?: string; 
+  tags?: string[]; 
+}
+
+const {
+  title = "Portfolio de Vincent Silvestri",
+  description = "Développeur web & mobile à Nice. Découvrez mes projets, compétences et parcours.",
+  canonicalUrl,
+  image,
+  imageAlt = title,
+  type = 'website',
+  noindex = false,
+  publishedTime,
+  tags = [],
+} = Astro.props as Props;
 
 const site = Astro.site?.toString() ?? "https://www.vince-dev.fr";
 const pathname = Astro.url.pathname;
@@ -7,16 +29,65 @@ const fullCanonical = canonicalUrl
   ? new URL(canonicalUrl, site).toString()
   : new URL(pathname, site).toString();
 
+// Image absolue (fallback générique)
+const defaultImage = "/assets/portrait-min.webp";
+const imagePath = image ?? defaultImage;
+const ogImage = new URL(imagePath, site).toString();
+
 const is404 = pathname === "/404";
+
+// JSON-LD de base (WebSite). On le met sur toutes les pages.
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": site,
+  "name": "Vincent Silvestri – Développeur Web & Mobile",
+  "inLanguage": "fr-FR"
+};
+
+// JSON-LD pour les projets (Article/CreativeWork)
+const isArticle = type === "article";
+const articleLd = isArticle ? {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "headline": title,
+  "description": description,
+  "image": ogImage,
+  "datePublished": publishedTime,
+  "author": {
+    "@type": "Person",
+    "name": "Vincent Silvestri"
+  },
+  "keywords": tags.join(", "),
+  "url": fullCanonical
+} : null;
 ---
 
 {!is404 && <link rel="canonical" href={fullCanonical} />}
+
 {title && <title>{title}</title>}
 {description && <meta name="description" content={description} />}
-<meta property="og:type" content="website" />
+
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<meta property="og:type" content={type} />
 <meta property="og:url" content={fullCanonical} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:alt" content={imageAlt} />
+
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<script type="application/ld+json">
+  {JSON.stringify(websiteLd)}
+</script>
+
+{isArticle && (
+  <script type="application/ld+json">
+    {JSON.stringify(articleLd)}
+  </script>
+)}

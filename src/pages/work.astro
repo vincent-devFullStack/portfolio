@@ -17,7 +17,6 @@ const compareProjects = (a: WorkEntry, b: WorkEntry): number => {
   if (a.data.pinned !== b.data.pinned) {
     return (b.data.pinned ? 1 : 0) - (a.data.pinned ? 1 : 0);
   }
-
   // 2) rank (plus petit = plus haut)
   const ar = typeof a.data.rank === 'number' ? a.data.rank : Number.POSITIVE_INFINITY;
   const br = typeof b.data.rank === 'number' ? b.data.rank : Number.POSITIVE_INFINITY;
@@ -35,15 +34,22 @@ allProjects.sort(compareProjects);
 
 const mainProjects = allProjects.filter((p) => !p.data.isMini);
 const miniProjects = allProjects.filter((p) => p.data.isMini);
+
+// SEO
+const pageTitle = "Mes Projets – Vincent Silvestri";
+const pageDescription = "Découvrez les projets web & mobile de Vincent Silvestri (Next.js, React Native, Node.js, MongoDB).";
 ---
 
-
 <BaseLayout
-  title="Mes Projets | Vincent SILVESTRI"
-  description="Découvrez les projets récents de Vincent Silvestri."
+  title={pageTitle}
+  description={pageDescription}
 >
-  <SEO canonicalUrl={canonicalUrl} />
-  
+  <SEO
+    canonicalUrl={canonicalUrl}
+    title={pageTitle}
+    description={pageDescription}
+  />
+
   <div class="stack gap-10">
     <main class="wrapper stack gap-8">
       <Hero
@@ -51,6 +57,7 @@ const miniProjects = allProjects.filter((p) => p.data.isMini);
         tagline="Découvrez mes projets récents pour mieux comprendre mon expérience et mes compétences."
         align="start"
       />
+
       <Grid variant="offset">
         {
           mainProjects.map((project) => (
