@@ -3,18 +3,21 @@ import { defineCollection, z } from "astro:content";
 
 export const collections = {
   work: defineCollection({
-    // Load Markdown files in the src/content/work directory.
     loader: glob({ base: "./src/content/work", pattern: "**/*.md" }),
     schema: z.object({
       title: z.string(),
       description: z.string(),
       publishDate: z.coerce.date(),
-      tags: z.array(z.string()),
+      tags: z.array(z.string()).default([]),
       img: z.string(),
       img_alt: z.string().optional(),
       demo: z.string().url().optional(),
-      isMini: z.boolean().optional().default(false),
       imgMobile: z.string().optional(),
+
+      // 🔽 contrôle d’ordre
+      rank: z.number().int().min(0).optional(),
+      pinned: z.boolean().default(false),
+      isMini: z.boolean().default(false),
     }),
   }),
 };

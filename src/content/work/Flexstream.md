@@ -4,6 +4,8 @@ publishDate: 2025-04-13
 img: /assets/flexstream.avif
 imgMobile: "/assets/flexstream-mobile.avif"
 img_alt: Capture de la page d'accueil de l'application Flexstream, avec navbar dégradée et menu responsive.
+rank: 20
+pinned: true
 demo: https://flexstream.vercel.app
 description: |
   Flexstream est une application web inspirée des grandes plateformes de streaming, développée avec Next.js 14.
