@@ -1,5 +1,5 @@
 ---
-title: "L'iconodule Lul"
+title: "L'iconodule Lul ✅"
 publishDate: 2024-07-15
 img: /assets/iconodule.avif
 imgMobile: "/assets/iconodule-mobile.avif"
