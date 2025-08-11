@@ -74,31 +74,25 @@ const canonicalUrl = canonical ?? defaultCanonical;
       />
     )}
 
-    <!-- JSON-LD Schema.org -->
-    <script type="application/ld+json">
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Person",
-        name: "Vincent Silvestri",
-        jobTitle: "Développeur Web et Mobile",
-        url: "https://www.vince-dev.fr",
-        sameAs: [
-          "https://www.linkedin.com/in/vincent-silvestri/",
-          "https://github.com/vincent-silvestri"
-        ],
-        image: "https://www.vince-dev.fr/assets/portrait-vincent-silvestri-developpeur.png",
-        description: "Développeur full stack web et mobile. J'utilise React, Node.js, MongoDB, etc.",
-        knowsAbout: [
-          "JavaScript",
-          "React",
-          "Node.js",
-          "MongoDB",
-          "UI/UX",
-          "Astro",
-          "Next.js"
-        ]
-      })}
-    </script>
+<!-- JSON-LD Schema.org -->
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Vincent Silvestri",
+    jobTitle: "Développeur Web et Mobile",
+    url: "https://www.vince-dev.fr",
+    sameAs: [
+      "https://www.linkedin.com/in/vincent-silvestri/",
+      "https://github.com/vincent-devFullStack"
+    ],
+    image: "https://www.vince-dev.fr/assets/portrait-min.webp",
+    description: "Développeur full stack web et mobile. J'utilise React, Node.js, MongoDB, etc.",
+    knowsAbout: ["JavaScript","React","Node.js","MongoDB","UI/UX","Astro","Next.js"]
+  })}
+/>
+
   </head>
 
   <body>

@@ -3,8 +3,6 @@ import type { APIRoute } from "astro";
 
 export const GET: APIRoute = async ({ site }) => {
   if (!site) {
-    // Assure-toi d'avoir "site" défini dans astro.config.mjs
-    // sinon remplace par ton domaine.
     site = new URL("https://www.vince-dev.fr");
   }
 

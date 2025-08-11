@@ -2,13 +2,13 @@
 interface Props {
   title?: string;
   description?: string;
-  canonicalUrl?: string; 
-  image?: string;        
+  canonicalUrl?: string;
+  image?: string;
   imageAlt?: string;
-  type?: 'website' | 'article'; 
-  noindex?: boolean;   
-  publishedTime?: string; 
-  tags?: string[]; 
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  publishedTime?: string;
+  tags?: string[];
 }
 
 const {
@@ -29,38 +29,37 @@ const fullCanonical = canonicalUrl
   ? new URL(canonicalUrl, site).toString()
   : new URL(pathname, site).toString();
 
-// Image absolue (fallback générique)
 const defaultImage = "/assets/portrait-min.webp";
 const imagePath = image ?? defaultImage;
 const ogImage = new URL(imagePath, site).toString();
 
 const is404 = pathname === "/404";
 
-// JSON-LD de base (WebSite). On le met sur toutes les pages.
+// JSON-LD de base
 const websiteLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "url": site,
-  "name": "Vincent Silvestri – Développeur Web & Mobile",
-  "inLanguage": "fr-FR"
+  url: site,
+  name: "Vincent Silvestri – Développeur Web & Mobile",
+  inLanguage: "fr-FR",
 };
 
-// JSON-LD pour les projets (Article/CreativeWork)
+// JSON-LD Article/CreativeWork si page projet
 const isArticle = type === "article";
-const articleLd = isArticle ? {
-  "@context": "https://schema.org",
-  "@type": "CreativeWork",
-  "headline": title,
-  "description": description,
-  "image": ogImage,
-  "datePublished": publishedTime,
-  "author": {
-    "@type": "Person",
-    "name": "Vincent Silvestri"
-  },
-  "keywords": tags.join(", "),
-  "url": fullCanonical
-} : null;
+const articleLd = isArticle
+  ? {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: title,
+      description,
+      image: ogImage,
+      url: fullCanonical,
+      author: { "@type": "Person", name: "Vincent Silvestri" },
+      ...(publishedTime ? { datePublished: publishedTime } : {}),
+      ...(tags.length ? { keywords: tags.join(", ") } : {}),
+      mainEntityOfPage: fullCanonical,
+    }
+  : null;
 ---
 
 {!is404 && <link rel="canonical" href={fullCanonical} />}
@@ -82,12 +81,8 @@ const articleLd = isArticle ? {
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImage} />
 
-<script type="application/ld+json">
-  {JSON.stringify(websiteLd)}
-</script>
-
+<!-- JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify(websiteLd)} />
 {isArticle && (
-  <script type="application/ld+json">
-    {JSON.stringify(articleLd)}
-  </script>
+  <script type="application/ld+json" set:html={JSON.stringify(articleLd)} />
 )}
