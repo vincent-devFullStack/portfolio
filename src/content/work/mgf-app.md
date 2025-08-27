@@ -6,6 +6,7 @@ imgMobile: "/assets/mgf-project-mobile.avif"
 img_alt: Application mobile Mentor Gym Fitness
 rank: 10
 pinned: true
+isMini: false
 description: |
   Mentor Gym Fitness est une application mobile complète conçue pour accompagner les passionnés de fitness et les athlètes dans la gestion de leurs objectifs de remise en forme. Elle propose une gamme de programmes d'entraînement personnalisés, le suivi des progrès et des conseils nutritionnels adaptés aux objectifs individuels. L'application se concentre sur l'amélioration des performances et le suivi des métriques clés pour garantir que les utilisateurs restent sur la bonne voie et atteignent leurs objectifs de fitness.
 tags:

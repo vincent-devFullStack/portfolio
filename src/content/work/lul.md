@@ -6,6 +6,8 @@ imgMobile: "/assets/iconodule-mobile.avif"
 img_alt: Plan interactif du musée virtuel L'iconodule
 rank: 30
 pinned: true
+demo: https://www.iconodule.fr/
+isMini: false
 description: |
   L'iconodule est un site web interactif conçu pour l'artiste Lul. Il propose une navigation immersive à travers un plan de musée cliquable et intègre un système d'administration complet permettant à l'artiste de gérer son contenu en toute autonomie.
 tags:

@@ -7,6 +7,7 @@ img_alt: Capture de la page d'accueil de l'application Flexstream, avec navbar d
 rank: 20
 pinned: true
 demo: https://flexstream.vercel.app
+isMini: false
 description: |
   Flexstream est une application web inspirée des grandes plateformes de streaming, développée avec Next.js 14.
   Elle propose une recherche dynamique, des fiches médias détaillées, une authentification sécurisée et une interface responsive soignée.
