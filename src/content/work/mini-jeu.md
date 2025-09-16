@@ -1,18 +1,18 @@
 ---
 title: "Mini-Jeu ✅"
-publishDate: 2024-12-02 00:00:00
-img: /assets/miniJeu.avif
+slug: "mini-jeu"
+publishDate: "2024-12-02"
+img: "/assets/miniJeu.avif"
 imgMobile: "/assets/miniJeu-mobile.avif"
-img_alt: Jeu d’entraînement simple avec deux cercles animés à cliquer, sur fond sombre.
+img_alt: "Jeu d'entraînement simple avec deux cercles animés à cliquer, sur fond sombre."
 isMini: true
-demo: https://mini-jeu-phi.vercel.app/
-isMini: true
+demo: "https://mini-jeu-phi.vercel.app/"
 description: |
-  Petit jeu interactif développé en HTML, CSS et JavaScript, dans le cadre de mon autoformation. L’objectif : cliquer sur deux cercles animés le plus de fois possible avant la fin du temps imparti. Ce projet m’a permis de pratiquer les bases du DOM, des événements et des animations CSS, tout en rendant l’apprentissage plus ludique.
+  Petit jeu interactif développé en HTML, CSS et JavaScript, dans le cadre de mon autoformation. L’objectif : cliquer sur deux cercles animés le plus de fois possible avant la fin du temps imparti. Ce projet m’a permis de pratiquer les bases du DOM, des événements et des animations CSS, tout en rendant l’apprentissage plus ludique.
 tags:
-  - HTML
-  - CSS
-  - JS
+  - "HTML"
+  - "CSS"
+  - "JavaScript"
 ---
 
 **Note :** Ce mini-projet met en avant ma capacité à mettre en pratique les bases du front-end : gestion des événements, manipulations DOM et animations simples. Ce projet m’a permis de progresser en JavaScript vanilla, sans chercher la complexité, mais en m’exerçant de façon concrète.
