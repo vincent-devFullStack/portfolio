@@ -29,7 +29,7 @@ const fullCanonical = canonicalUrl
   ? new URL(canonicalUrl, site).toString()
   : new URL(pathname, site).toString();
 
-const defaultImage = "/assets/portrait-min.webp";
+const defaultImage = "/assets/portrait-min.avif";
 const imagePath = image ?? defaultImage;
 const ogImage = new URL(imagePath, site).toString();
 
