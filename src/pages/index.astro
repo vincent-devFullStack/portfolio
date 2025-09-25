@@ -154,7 +154,7 @@ if (projects.length < MAX_TOTAL) {
                 'Java / Spring Boot',
                 'Vue.js / Angular',
                 'Ansible / Admin Système',
-                'Materialize (vu)'
+
               ].map((brand) => (
                 <li class="mention-card future-stack">
                   <p>{brand}</p>
@@ -162,6 +162,20 @@ if (projects.length < MAX_TOTAL) {
               ))
             }
           </Grid>
+          <div style="margin-top:2rem">
+          <Grid variant="small">
+            {
+              [
+                'Python',
+                'Materialize'
+              ].map((brand) => (
+                <li class="mention-card">
+                  <p>{brand}</p>
+                </li>
+              ))
+            }
+          </Grid>
+          </div>
         </div>
       </section>
 
@@ -183,7 +197,8 @@ if (projects.length < MAX_TOTAL) {
                 'Python',
                 'GitHub',
                 'Vercel',
-                'Figma'
+                'Figma',
+                "Next.js"
               ].map((brand) => (
                 <li class="mention-card">
                   <p>{brand}</p>
@@ -322,6 +337,7 @@ if (projects.length < MAX_TOTAL) {
 
     .cta {
       grid-area: cta;
+      
     }
 
     .mention-card {
@@ -338,17 +354,24 @@ if (projects.length < MAX_TOTAL) {
     justify-content: center;
     align-items: center;
     text-align: center;
-    border: 1px solid var(--gray-800);
+    border: 2px solid var(--gray-800);
     border-radius: 1.5rem;
     color: var(--gray-300);
     background: var(--gradient-subtle);
     box-shadow: var(--shadow-sm);
+
   }
 
   .mention-card:hover {
     background: var(--gradient-subtle-hover);
     color: var(--gray-0);
-  }
+    box-shadow:
+    0 0 10px rgba(200, 0, 255, 0.6),
+    0 0 20px rgba(247, 0, 255, 0.4), 
+    0 0 40px rgba(102, 0, 255, 0.9); 
+}
+
+
 
   .future-stack {
     opacity: 0.4;
