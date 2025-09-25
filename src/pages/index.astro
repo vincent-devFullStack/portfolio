@@ -22,7 +22,6 @@ import Skills from '../components/Skills.astro';
 // Canonical URL
 const canonicalUrl = "/";
 
-
 // Content Fetching: privilégier les "gros" projets
 const MAX_TOTAL = 6;
 
@@ -39,353 +38,347 @@ let projects = mains.slice(0, 3);
 if (projects.length < MAX_TOTAL) {
   projects = projects.concat(minis.slice(0, MAX_TOTAL - projects.length));
 }
-
-
-// Full Astro Component Syntax:
-
 ---
 
 <BaseLayout>
-	<SEO canonicalUrl={canonicalUrl} />
-	<div class="stack gap-20 lg:gap-48">
-		<div class="wrapper stack gap-8 lg:gap-20">
-			<header class="hero">
-				<Hero
-					title="Salut, moi c'est Vincent !"
-					tagline="Développeur junior, passionné et déterminé à progresser."
-					align="start"
-				>
-					<div class="roles">
-						<Pill><Icon icon="code" size="1.03em" /> Developer Junior</Pill>
-						<Pill><Icon icon="trophy" size="1.03em" /> Objectif Alternance</Pill>
-						<Pill><Icon icon="suitcase" size="1.03em" /> Prêt pour un stage</Pill>
-					</div>
-				</Hero>
+  <SEO canonicalUrl={canonicalUrl} />
+  <div class="stack gap-10 lg:gap-24">
+    <div class="wrapper stack gap-8 lg:gap-20">
+      <header class="hero">
+        <Hero
+          title="Vincent Silvestri"
+          tagline="Étudiant à Epitech - Master of Science Architecte des Systèmes d'Information"
+          align="start"
+        >
+          <div class="roles">
+            <Pill><Icon icon="code" size="1.03em" />Développeur Junior</Pill>
+            <Pill><Icon icon="suitcase" size="1.03em" />Recherche contrat d'apprentissage</Pill>
+          </div>
+        </Hero>
 
-				<img
-  alt="Portrait de Vincent Silvestri, Développeur Web et Mobile basé à Nice"
-  src="/assets/portrait-min.avif"
-  fetchpriority="high"
-  width="360"
-  height="480"
-  decoding="async"
-  style="
-    width: 100%;
-    max-width: 360px;
-    height: auto;
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);"
-/>
+        <img
+          alt="Portrait de Vincent Silvestri, Développeur Web et Mobile basé à Nice"
+          src="/assets/portrait-min.avif"
+          fetchpriority="high"
+          width="360"
+          height="480"
+          decoding="async"
+          style="
+            width: 100%;
+            max-width: 360px;
+            height: auto;
+            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+          "
+        />
+      </header>
 
+      <section class="section with-background">
+        <header class="section-header stack gap-2 lg:gap-4 text-left items-start">
+          <h2>Je recherche un contrat d'apprentissage</h2>
+          <p>
+            Je recherche une <strong>alternance à partir du 26 décembre 2025</strong> pour poursuivre ma formation en tant qu'Architecte des Systèmes d'Information à <strong>Epitech Nice</strong>. Je souhaite rejoindre une entreprise pour concevoir, développer et déployer des solutions web & mobile.
+          </p>
+          <p>📍 Basé à Nice, ouvert au télétravail ou format hybride.</p>
+        </header>
 
+        <div class="cta apprenticeship-cta">
+          <CallToAction href="mailto:vincent.silvestri@epitech.eu?subject=Alternance%20janvier%202026&body=Bonjour%20Vincent,%0D%0ANous%20souhaiterions%20vous%20rencontrer.%20Quelles%20sont%20vos%20disponibilit%C3%A9s%20%3F">
+            Me contacter
+          </CallToAction>
+          <CallToAction href="/CV_Vincent_SILVESTRI.pdf">
+            Voir mon CV
+          </CallToAction>
+        </div>
+      </section>
 
-			</header>
-<section class="section with-background">
-  <header class="section-header stack gap-2 lg:gap-4 text-left items-start">
+      <Skills />
+    </div>
 
-    <h2>En recherche d'alternance</h2>
-    <p>
-      Je recherche une <strong>alternance à partir de janvier 2026</strong> pour poursuivre ma formation en développement web & mobile à <strong>Epitech Nice</strong>.
-    </p>
-    <p>
-      📍 Basé à Nice, ouvert au télétravail ou format hybride.
-    </p>
-  </header>
+    <main class="wrapper stack gap-20 lg:gap-48">
+      <section class="section with-background with-cta">
+        <header class="section-header stack gap-2 lg:gap-4">
+          <h3>Travaux sélectionnés</h3>
+          <p>Voici quelques-uns des projets sur lesquels j'ai travaillé récemment.</p>
+        </header>
 
-  <div class="cta">
-  <CallToAction href="/Vincent_Silvestri_CV.pdf">
-  📄 Voir mon CV
-  <Icon icon="arrow-right" size="1.2em" />
-</CallToAction>
+        <div class="gallery">
+          <Grid variant="offset">
+            {
+              projects.map((project) => (
+                <li>
+                  <a class="demo-image" href={`/work/${project.id}`}>
+                    <picture>
+                      {project.data.imgMobile && (
+                        <source srcset={project.data.imgMobile} media="(max-width: 768px)" />
+                      )}
+                      <img
+                        src={project.data.img}
+                        alt={project.data.img_alt || ''}
+                        loading="lazy"
+                        width="640"
+                        height="360"
+                      />
+                    </picture>
 
+                    {project.data.title.includes('✅') && (
+                      <span class="badgeTermine">Terminé</span>
+                    )}
+                  </a>
+                </li>
+              ))
+            }
+          </Grid>
+        </div>
 
-</section>
+        <div class="cta">
+          <CallToAction href="/work">
+            Voir tout
+            <Icon icon="arrow-right" size="1.2em" />
+          </CallToAction>
+        </div>
+      </section>
 
-			<Skills />
-		</div>
+      <section class="section with-background bg-variant">
+        <header class="section-header stack gap-2 lg:gap-4">
+          <h3>Stack Epitech (vues & à venir)</h3>
+          <p>Voici les technologies vues et celles prévues dans le cursus Epitech.</p>
+        </header>
 
-		<main class="wrapper stack gap-20 lg:gap-48">
-			<section class="section with-background with-cta">
-				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Travaux sélectionnés</h3>
-					<p>Voici quelques-uns des projets sur lesquels j'ai travaillé récemment.</p>
-				</header>
+        <div class="gallery">
+          <Grid variant="small">
+            {
+              [
+                'PHP / MySQL',
+                'Java / Spring Boot',
+                'Vue.js / Angular',
+                'Ansible / Admin Système',
+                'Materialize (vu)'
+              ].map((brand) => (
+                <li class="mention-card future-stack">
+                  <p>{brand}</p>
+                </li>
+              ))
+            }
+          </Grid>
+        </div>
+      </section>
 
-				<div class="gallery">
-					<Grid variant="offset">
-						{
-							projects.map((project) => (
-								<li>
-									<a class="demo-image" href={`/work/${project.id}`}>
-										<picture>
-  {project.data.imgMobile && (
-    <source srcset={project.data.imgMobile} media="(max-width: 768px)" />
-  )}
-  <img
-    src={project.data.img}
-    alt={project.data.img_alt || ''}
-    loading="lazy"
-    width="640"
-    height="360"
-  />
-</picture>
+      <section class="section with-background bg-variant">
+        <header class="section-header stack gap-2 lg:gap-4">
+          <h3>Stack actuelle</h3>
+          <p>Voici les technologies que j’utilise au quotidien, ou que j’ai eu l’occasion d’explorer.</p>
+        </header>
 
-										{project.data.title.includes('✅') && (
-											<span class="badgeTermine">Terminé</span>
-										)}
-									</a>
-								</li>
-							))
-						}
-					</Grid>
-				</div>
+        <div class="gallery">
+          <Grid variant="small">
+            {
+              [
+                'React / React Native',
+                'Node.js',
+                'MongoDB',
+                'Astro',
+                'TailwindCSS',
+                'Python',
+                'GitHub',
+                'Vercel',
+                'Figma'
+              ].map((brand) => (
+                <li class="mention-card">
+                  <p>{brand}</p>
+                </li>
+              ))
+            }
+          </Grid>
+        </div>
+      </section>
+    </main>
 
-				<div class="cta">
-					<CallToAction href="/work">
-						Voir tout
-						<Icon icon="arrow-right" size="1.2em" />
-					</CallToAction>
-				</div>
-			</section>
-
-			<section class="section with-background bg-variant">
-				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Stack à venir (Epitech pré-MSc)</h3>
-					<p>
-					Voici les technologies que je vais étudier à Epitech à partir de septembre 2025.
-					</p>
-				</header>
-
-				<div class="gallery">
-					<Grid variant="small">
-						{
-							[
-              'PHP / MySQL',
-              'Java / Spring Boot',
-              'Vue.js / Angular',
-              'Ansible / Admin Système'
-            ].map((brand) => (
-								<li class="mention-card future-stack">
-									<p>{brand}</p>
-								</li>
-							))
-						}
-					</Grid>
-				</div>
-			</section>
-
-			<section class="section with-background bg-variant">
-				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Stack actuelle</h3>
-					<p>
-						Voici les technologies que j’utilise au quotidien, ou que j’ai eu l’occasion d’explorer.
-					</p>
-				</header>
-
-				<div class="gallery">
-					<Grid variant="small">
-						{
-							['React/React Native', 'Node.js', 'MongoDB', 'Astro', 'TailwindCSS', 'GitHub', 'Vercel', 'Figma'].map((brand) => (
-								<li class="mention-card">
-									<p>{brand}</p>
-								</li>
-							))
-						}
-					</Grid>
-				</div>
-			</section>
-		</main>
-
-		<ContactCTA />
-	</div>
+    <ContactCTA />
+  </div>
 </BaseLayout>
 
 <style>
-	.hero {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 2rem;
-	}
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
 
-	.roles {
-		display: none;
-	}
+  .roles {
+    display: none;
+  }
 
-	.hero img {
-		aspect-ratio: 5 / 4;
-		object-fit: cover;
-		object-position: top;
-		border-radius: 1.5rem;
-		box-shadow: var(--shadow-md);
-		width: 360px;
-max-width: 100%;
-height: auto;
+  .hero img {
+    aspect-ratio: 5 / 4;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-md);
+    width: 360px;
+    max-width: 100%;
+    height: auto;
+  }
 
-	}
+  @media (min-width: 800px) {
+    .hero {
+      display: grid;
+      grid-template-columns: 6fr 4fr;
+      padding-inline: 2.5rem;
+      gap: 3.75rem;
+    }
 
-	@media (min-width: 50em) {
-		.hero {
-			display: grid;
-			grid-template-columns: 6fr 4fr;
-			padding-inline: 2.5rem;
-			gap: 3.75rem;
-		}
+    .roles {
+      margin-top: 0.5rem;
+      display: flex;
+      gap: 0.5rem;
+    }
 
-		.roles {
-			margin-top: 0.5rem;
-			display: flex;
-			gap: 0.5rem;
-		}
+    .hero img {
+      aspect-ratio: 3 / 4;
+      border-radius: 4.5rem;
+      object-fit: cover;
+    }
+  }
 
-		.hero img {
-			aspect-ratio: 3 / 4;
-			border-radius: 4.5rem;
-			object-fit: cover;
-		}
-	}
+  /* ====================================================== */
 
-	/* ====================================================== */
+  .section {
+    display: grid;
+    gap: 2rem;
+  }
 
-	.section {
-		display: grid;
-		gap: 2rem;
-	}
+  .with-background {
+    position: relative;
+  }
 
-	.with-background {
-		position: relative;
-	}
+  .with-background::before {
+    --hero-bg: var(--bg-image-subtle-2);
 
-	.with-background::before {
-		--hero-bg: var(--bg-image-subtle-2);
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    left: 50%;
+    width: 100vw;
+    aspect-ratio: calc(2.25 / var(--bg-scale));
+    top: 0;
+    transform: translateY(-75%) translateX(-50%);
+    background:
+      url('/assets/backgrounds/noise.avif') top center/220px repeat,
+      var(--hero-bg) center center / var(--bg-gradient-size) no-repeat,
+      var(--gray-999);
+    background-blend-mode: overlay, normal, normal, normal;
+    mix-blend-mode: var(--bg-blend-mode);
+    z-index: -1;
+  }
 
-		content: '';
-		position: absolute;
-		pointer-events: none;
-		left: 50%;
-		width: 100vw;
-		aspect-ratio: calc(2.25 / var(--bg-scale));
-		top: 0;
-		transform: translateY(-75%) translateX(-50%);
-		background:
-			url('/assets/backgrounds/noise.avif') top center/220px repeat,
-			var(--hero-bg) center center / var(--bg-gradient-size) no-repeat,
-			var(--gray-999);
-		background-blend-mode: overlay, normal, normal, normal;
-		mix-blend-mode: var(--bg-blend-mode);
-		z-index: -1;
-	}
+  .with-background.bg-variant::before {
+    --hero-bg: var(--bg-image-subtle-1);
+  }
 
-	.with-background.bg-variant::before {
-		--hero-bg: var(--bg-image-subtle-1);
-	}
+  .section-header h3 {
+    font-size: var(--text-2xl);
+  }
 
-	.section-header h3 {
-		font-size: var(--text-2xl);
-	}
+  @media (min-width: 50em) {
+    .section {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-areas: 'header header header header' 'gallery gallery gallery gallery';
+      gap: 4rem;
+    }
 
-	@media (min-width: 50em) {
-		.section {
-			grid-template-columns: repeat(4, 1fr);
-			grid-template-areas: 'header header header header' 'gallery gallery gallery gallery';
-			gap: 5rem;
-		}
+    .section.with-cta {
+      grid-template-areas: 'header header header cta' 'gallery gallery gallery gallery';
+    }
 
-		.section.with-cta {
-			grid-template-areas: 'header header header cta' 'gallery gallery gallery gallery';
-		}
+    .section-header {
+      grid-area: header;
+      font-size: var(--text-lg);
+    }
 
-		.section-header {
-			grid-area: header;
-			font-size: var(--text-lg);
-		}
+    .section-header {
+      align-items: flex-start;
+      text-align: left;
+      margin-left: 40px;
+      max-width: 250ch;
+      font-size: var(--text-md);
+      color: var(--gray-300);
+    }
 
-		.section-header {
-		align-items: flex-start;
-  		text-align: left;
-		margin-left: 40px;
-		max-width: 250ch;
-		font-size: var(--text-md);
-		color: var(--gray-300);
-		
-	}
+    .section-header h3 {
+      font-size: var(--text-4xl);
+    }
 
-		.section-header h3 {
-			font-size: var(--text-4xl);
-		}
+    .with-cta .section-header {
+      justify-self: flex-start;
+      text-align: left;
+    }
 
-		.with-cta .section-header {
-			justify-self: flex-start;
-			text-align: left;
-		}
+    .gallery {
+      grid-area: gallery;
+    }
 
-		.gallery {
-			grid-area: gallery;
-		}
+    .cta {
+      grid-area: cta;
+    }
 
-		.cta {
-			grid-area: cta;
-		}
-		.mention-card {
-			border-radius: 1.5rem;
-			height: 9.5rem;
-		}
-	}
+    .mention-card {
+      border-radius: 1.5rem;
+      height: 9.5rem;
+    }
+  }
 
-	/* ====================================================== */
+  /* ====================================================== */
 
-	.mention-card {
-		display: flex;
-		height: 7rem;
-		justify-content: center;
-		align-items: center;
-		text-align: center;
-		border: 1px solid var(--gray-800);
-		border-radius: 1.5rem;
-		color: var(--gray-300);
-		background: var(--gradient-subtle);
-		box-shadow: var(--shadow-sm);
-	}
+  .mention-card {
+    display: flex;
+    height: 7rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid var(--gray-800);
+    border-radius: 1.5rem;
+    color: var(--gray-300);
+    background: var(--gradient-subtle);
+    box-shadow: var(--shadow-sm);
+  }
 
-	.mention-card:hover {
-		background: var(--gradient-subtle-hover);
-		color: var(--gray-0);
-	}
+  .mention-card:hover {
+    background: var(--gradient-subtle-hover);
+    color: var(--gray-0);
+  }
 
-	.future-stack {
-  opacity: 0.4;
-  font-style: italic;
-  transition: all 0.3s ease;
-}
+  .future-stack {
+    opacity: 0.4;
+    font-style: italic;
+    transition: all 0.3s ease;
+  }
 
-.future-stack:hover {
-  opacity: 1;
-  font-style: normal;
-}
+  .future-stack:hover {
+    opacity: 1;
+    font-style: normal;
+  }
 
+  /* ====================================================== */
+  /* Boutons apprentissage CTA */
+  .apprenticeship-cta {
+    display: flex;
+    flex-direction: column; /* mobile par défaut */
+    gap: 0.75rem;
+    align-items: stretch;
+  }
 
-	@media (max-width: 480px) {
-	
-		.mention-card {
-			display: flex;
-			height: 7rem;
-			justify-content: center;
-			align-items: center;
-			text-align: center;
-			font-size: 3rem;
-			border: 1px solid var(--gray-800);
-			border-radius: 1.5rem;
-			color: var(--gray-300);
-			background: var(--gradient-subtle);
-			box-shadow: var(--shadow-sm);
-		} 
-		.section-header {
-		justify-self: center;
-		text-align: center;
-		max-width: 50ch;
-		font-size: var(--text-md);
-		color: var(--gray-300);
-	}
-	}
+  @media (min-width: 50em) {
+    .apprenticeship-cta {
+      flex-direction: row; /* desktop */
+      gap: 1rem;
+      align-items: center;
+    }
+    .apprenticeship-cta > * {
+      flex: 1; /* (optionnel) même largeur */
+      margin: 0;
+    }
+  }
 </style>
