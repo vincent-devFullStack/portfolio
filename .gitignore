@@ -1,25 +1,30 @@
-# build output
+# Node
+node_modules/
+.pnpm-store/
+
+# Astro build & cache
 dist/
-# generated types
 .astro/
 
-# dependencies
-node_modules/
+# Vercel
+.vercel/
 
-# logs
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+*.log
 
-
-# environment variables
+# Env
 .env
-.env.production
+.env*.local
 
-# macOS-specific files
+# OS
 .DS_Store
+Thumbs.db
 
-# jetbrains setting folder
-.idea/
-.vercel/
+# VS Code (ne garde que ce qui est utile à tous)
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json

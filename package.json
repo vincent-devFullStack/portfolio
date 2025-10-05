@@ -1,17 +1,22 @@
 {
   "name": "portfolio-vincent",
   "version": "0.1.0",
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "check": "astro check && tsc --noEmit"
   },
-  "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/vercel": "^8.2.8",
+  "devDependencies": {
     "astro": "5.14.0",
-    "mdast-util-gfm-autolink-literal": "^2.0.1",
+    "@astrojs/vercel": "^8.2.8",
+    "@astrojs/check": "^0.9.4",
     "remark-gfm": "^4.0.1",
     "typescript": "^5.8.3"
-  }
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "packageManager": "pnpm@9.0.0"
 }
