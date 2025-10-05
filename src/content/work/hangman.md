@@ -1,10 +1,10 @@
 ---
-title: "Hangman 🎮"
+title: "Hangman ✅🎮"
 publishDate: 2025-01-10
 img: /assets/hangman.avif
 imgMobile: "/assets/hangman-mobile.avif"
 img_alt: Capture d'écran du jeu Hangman développé en Python avec Pygame
-isMini: true
+isMini: false
 description: |
   Jeu du pendu développé en Python avec Pygame, puis exporté en WebAssembly grâce à Pygbag pour être jouable directement dans le navigateur.
 tags:
