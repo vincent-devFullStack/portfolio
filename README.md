@@ -19,6 +19,7 @@ Il présente mon parcours, mes projets (Flexstream, Mentor Gym Fitness, L’Icon
 
 ## 📂 Structure du projet
 
+```text
 ├── public/ # Assets publics (favicon, PDF, images...)
 ├── src/
 │ ├── components/ # Composants Astro/TS réutilisables
@@ -30,6 +31,7 @@ Il présente mon parcours, mes projets (Flexstream, Mentor Gym Fitness, L’Icon
 ├── package.json # Dépendances + scripts
 ├── pnpm-lock.yaml # Lockfile pnpm (reproductibilité)
 └── tsconfig.json # Config TypeScript
+```
 
 ---
 
