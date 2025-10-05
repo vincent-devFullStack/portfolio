@@ -237,8 +237,50 @@ if (projects.length < MAX_TOTAL) {
     max-width: 100%;
     height: auto;
   }
+    .with-background {
+    padding-bottom: 7rem; /* tweak if you want more/less spacing */
+  }
+
+  /* Anchor the apprenticeship CTA */
+  .apprenticeship-cta {
+    position: absolute;
+    right: 2.5rem;   /* align with your header padding */
+    bottom: 2.5rem;  /* sits nicely above the section bottom */
+    z-index: 3;      /* above the section background pseudo-element */
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  /* Optional: keep equal width buttons if you like */
+  .apprenticeship-cta > * {
+    flex: 1 1 auto;
+  }
 
   @media (min-width: 800px) {
+
+    .with-background {
+    position: relative;
+    padding-bottom: 7rem;
+  }
+
+  /* Position absolute SEULEMENT sur desktop */
+  .apprenticeship-cta {
+    position: absolute;
+    right: 2.5rem;
+    bottom: 2.5rem;
+    z-index: 3;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 0; /* Retire la marge sur desktop */
+    max-width: 400px; /* Limite la largeur des boutons */
+  }
+
+  .apprenticeship-cta > * {
+    flex: 1 1 auto;
+  }
+
     .hero {
       display: grid;
       grid-template-columns: 6fr 4fr;
