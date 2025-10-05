@@ -14,15 +14,54 @@ tags:
   - CSS
 ---
 
-Ce projet a été développé dans le cadre d’un **exercice de la piscine Epitech**.  
-L’objectif était de manipuler uniquement **HTML et CSS** pour construire une **version digitale de mon CV**, avec un design original et un fond animé pour rendre la présentation plus attractive.
+## Aperçu du projet
 
-C’était une bonne occasion de **travailler la structuration du HTML**, de renforcer mes bases en **CSS** et d’expérimenter des **animations simples**.  
-Aujourd’hui, je pourrais aller plus loin avec des frameworks modernes (Astro, React, etc.), mais ce projet illustre bien l’esprit créatif de la piscine : apprendre vite, expérimenter et produire un résultat concret.
+> Un CV en ligne interactif et animé, conçu dans le cadre d’un exercice de la piscine Epitech.
+
+Ce projet a été développé en **2 jours** lors de la **piscine Web d’Epitech**.  
+L’objectif était de créer un **CV digital** uniquement avec **HTML et CSS**, sans recours à JavaScript ni à des bibliothèques externes.
+
+Le rendu devait à la fois être **responsive**, présenter clairement les informations essentielles d’un CV (expériences, compétences, contact), et inclure des éléments visuels ou des animations pour se démarquer.
+
+J’ai choisi de partir sur un design simple mais animé, avec un effet de **fade-in / slide-up** sur le fond et les éléments, ainsi qu’un formulaire de contact intégré (via Freeform).
 
 ---
 
-## 🔗 Liens utiles
+### ✨ Contraintes de l’exercice
+
+- Utiliser **uniquement HTML et CSS**
+- **Aucune librairie ni framework** autorisé
+- Code organisé et séparé entre structure (HTML) et style (CSS)
+- Site **responsive**
+- Contenu structuré comme un vrai CV
+
+---
+
+### 🔑 Fonctionnalités principales
+
+- 🎨 **Animations CSS** (fade-in up sur les blocs et le background)
+- 📝 **Formulaire de contact** intégré directement dans la page
+- 📱 **Responsive design** pour une lecture sur desktop et mobile
+- 🧩 **Sections claires** : présentation, parcours, compétences, contact
+
+---
+
+### 📚 Apprentissage
+
+Ce projet m’a permis de :
+
+- Travailler la **structuration d’un site** avec HTML/CSS uniquement
+- Expérimenter les **animations CSS** pour dynamiser une page statique
+- Prendre en compte la **responsivité** dès la conception
+- Publier mon premier site via **GitHub Pages**
+
+---
+
+### 🔗 Liens utiles
 
 - 💻 Code source : [Voir sur GitHub](https://github.com/vincent-devFullStack/cv-digital)
 - 🚀 Démo en ligne : [Voir le CV digital](https://vincent-devfullstack.github.io/cv-digital/index.html)
+
+---
+
+✅ Projet terminé – il a rempli son rôle pédagogique lors de la piscine, et reste une bonne démonstration de mes bases en intégration web.
