@@ -10,8 +10,8 @@ export const GET: APIRoute = async ({ site }) => {
 
   const STATIC_PAGES = [
     { path: "/", changefreq: "monthly", priority: "1.0", lastmod: isoNow },
-    { path: "/about/", changefreq: "yearly", priority: "0.7", lastmod: isoNow },
-    { path: "/work/", changefreq: "monthly", priority: "0.8", lastmod: isoNow },
+    { path: "/about", changefreq: "yearly", priority: "0.7", lastmod: isoNow },
+    { path: "/work", changefreq: "monthly", priority: "0.8", lastmod: isoNow },
   ];
 
   const allWork = await getCollection("work");
@@ -46,7 +46,7 @@ export const GET: APIRoute = async ({ site }) => {
   });
 
   const DYNAMIC_PAGES = published.map((p) => ({
-    path: `/work/${p.id}/`,
+    path: `/work/${p.slug}`,
     changefreq: "yearly",
     priority: "0.6",
     lastmod: (p.data.publishDate instanceof Date

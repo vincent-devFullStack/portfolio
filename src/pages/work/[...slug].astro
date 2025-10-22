@@ -1,5 +1,5 @@
 ---
-import { getCollection, getEntry, render } from 'astro:content';
+import { getCollection, getEntryBySlug, render } from 'astro:content';
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
@@ -12,21 +12,21 @@ export const prerender = true;
 
 export async function getStaticPaths() {
   const allWork = await getCollection('work');
-  return allWork.map(({ id }) => ({
-    params: { slug: id },
-    props: { id },
+  return allWork.map(({ slug }) => ({
+    params: { slug },
   }));
 }
 
-const { id } = Astro.props;
-if (!id) throw new Error('Slug introuvable dans Astro.props');
+const slugParam = Astro.params?.slug;
+const slug = Array.isArray(slugParam) ? slugParam.join('/') : slugParam;
+if (!slug) throw new Error('Slug introuvable dans Astro.params');
 
-const entry = await getEntry('work', id);
-if (!entry) throw new Error(`Aucune entrée trouvée pour le slug "${id}"`);
+const entry = await getEntryBySlug('work', slug);
+if (!entry) throw new Error(`Aucune entrée trouvée pour le slug "${slug}"`);
 
 const { Content } = await render(entry);
 const title = (entry.data.title || '').replace(' ✅', '');
-const canonicalPath = `/work/${id}/`; // <- relatif (SEO.astro fera l’absolu)
+const canonicalPath = `/work/${slug}`; // <- relatif (SEO.astro fera l’absolu)
 const publishedTime = entry.data.publishDate instanceof Date
   ? entry.data.publishDate.toISOString()
   : entry.data.publishDate;

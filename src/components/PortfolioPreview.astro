@@ -5,10 +5,11 @@ interface Props {
   project: CollectionEntry<'work'>;
 }
 
-const { data, id } = Astro.props.project;
+const { data, slug } = Astro.props.project;
 const isDone = data.title.includes('✅');
+const href = `/work/${slug}`;
 ---
-<a class="card" href={`/work/${id}`}>
+<a class="card" href={href}>
 	{isDone && <span class="badge">Terminé</span>}
 	<span class="title">{data.title.replace(' ✅', '')}</span>
 	<img src={data.img} alt={data.img_alt || 'Aperçu du projet'} loading="lazy" decoding="async" />
