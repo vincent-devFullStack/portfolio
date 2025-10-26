@@ -3,7 +3,7 @@
 Mon portfolio personnel, développé avec [Astro](https://astro.build/) et déployé sur [Vercel](https://vercel.com/).  
 Il présente mon parcours, mes projets (Flexstream, Mentor Gym Fitness, L’Iconodule, etc.) et permet de télécharger mon CV.
 
-🔗 **En ligne :** [![Deploy](https://img.shields.io/badge/deployed%20on-vercel-black?logo=vercel)][https://www.vince-dev.fr](https://www.vince-dev.fr)
+🔗 **En ligne :** ![Deploy](https://img.shields.io/badge/deployed%20on-vercel-black?logo=vercel)[https://www.vince-dev.fr](https://www.vince-dev.fr)
 
 ---
 
