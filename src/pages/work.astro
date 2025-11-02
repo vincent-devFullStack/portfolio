@@ -60,9 +60,12 @@ const pageDescription = "Découvrez les projets web & mobile de Vincent Silvestr
 
       <Grid variant="offset">
         {
-          mainProjects.map((project) => (
+          mainProjects.map((project, index) => (
             <li>
-              <PortfolioPreview project={project} />
+              <PortfolioPreview
+                project={project}
+                priority={index < 4 ? 'high' : 'auto'}
+              />
             </li>
           ))
         }

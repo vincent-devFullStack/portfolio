@@ -6,6 +6,7 @@ img: "/assets/miniJeu.avif"
 imgMobile: "/assets/miniJeu-mobile.avif"
 img_alt: "Jeu d'entraînement simple avec deux cercles animés à cliquer, sur fond sombre."
 isMini: true
+rank: 10
 demo: "https://mini-jeu-phi.vercel.app/"
 description: |
   Petit jeu interactif développé en HTML, CSS et JavaScript, dans le cadre de mon autoformation. L’objectif : cliquer sur deux cercles animés le plus de fois possible avant la fin du temps imparti. Ce projet m’a permis de pratiquer les bases du DOM, des événements et des animations CSS, tout en rendant l’apprentissage plus ludique.

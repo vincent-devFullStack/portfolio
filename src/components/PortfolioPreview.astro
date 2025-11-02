@@ -3,16 +3,32 @@ import type { CollectionEntry } from 'astro:content';
 
 interface Props {
   project: CollectionEntry<'work'>;
+  priority?: 'high' | 'auto';
 }
 
-const { data, slug } = Astro.props.project;
+const { project, priority = 'auto' } = Astro.props as Props;
+const { data, slug } = project;
 const isDone = data.title.includes('✅');
 const href = `/work/${slug}`;
+const loading = priority === 'high' ? 'eager' : 'lazy';
+const fetchPriority = priority;
 ---
 <a class="card" href={href}>
 	{isDone && <span class="badge">Terminé</span>}
 	<span class="title">{data.title.replace(' ✅', '')}</span>
-	<img src={data.img} alt={data.img_alt || 'Aperçu du projet'} loading="lazy" decoding="async" />
+	<picture>
+		{data.imgMobile && <source srcset={data.imgMobile} media="(max-width: 50em)" />}
+		<img
+			src={data.img}
+			alt={data.img_alt || 'Aperçu du projet'}
+			loading={loading}
+			fetchpriority={fetchPriority}
+			decoding="async"
+			width="960"
+			height="540"
+			sizes="(max-width: 50em) 100vw, 480px"
+		/>
+	</picture>
 </a>
 
 <style>
@@ -45,6 +61,14 @@ const href = `/work/${slug}`;
 	filter: brightness(1.05) saturate(1.1);
 }
 
+picture {
+	grid-area: 1 / 1 / 3 / 3;
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+picture,
 img {
 	grid-area: 1 / 1 / 3 / 3;
 	width: 100%;

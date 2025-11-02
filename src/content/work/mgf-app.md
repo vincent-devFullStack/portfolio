@@ -4,7 +4,7 @@ publishDate: 2025-04-10
 img: /assets/mgf-project.avif
 imgMobile: "/assets/mgf-project-mobile.avif"
 img_alt: Application mobile Mentor Gym Fitness
-rank: 10
+rank: 50
 pinned: true
 isMini: false
 description: |

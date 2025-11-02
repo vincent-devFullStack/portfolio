@@ -4,9 +4,9 @@ publishDate: 2025-12-17
 img: /assets/smart-fridge.avif
 imgMobile: "/assets/smart-fridge-mobile.avif"
 img_alt: Schéma conceptuel du projet Smart Fridge illustrant les capteurs IoT et l’application mobile associée.
-rank: 40
+rank: 30
 pinned: false
-isMini: false
+isMini: true
 description: |
   Smart Fridge est un projet de conception et de planification mené dans le cadre du module T-CEN-500 à Epitech Nice.
   L’objectif est d’évaluer la faisabilité d’un réfrigérateur intelligent capable de recommander des repas adaptés aux besoins nutritionnels et à l’état de santé des utilisateurs, en s’appuyant sur leurs données issues d’objets connectés.

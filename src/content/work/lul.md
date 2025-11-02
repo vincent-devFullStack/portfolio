@@ -1,11 +1,11 @@
 ---
 title: "L'iconodule Lul ✅"
-publishDate: 2024-07-15
+publishDate: 2023-07-15
 img: /assets/iconodule.avif
 imgMobile: "/assets/iconodule-mobile.avif"
 img_alt: Plan interactif du musée virtuel L'iconodule
-rank: 30
-pinned: true
+rank: 100
+pinned: false
 demo: https://www.iconodule.fr/
 isMini: false
 description: |
